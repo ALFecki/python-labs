@@ -4,14 +4,11 @@ from utilities import arithmetic_operation
 def main():
     print("Hello, World!")
     
-    print("Please enter first number: ")
-    first = int(input)
+    first = int(input("Please enter first number: "))
 
-    print("Please enter second number: ")
-    second = int(input)
+    second = int(input("Please enter second number: "))
 
-    print("Please enter operation: ")
-    operation = str(input)
+    operation = str(input("Please enter operation: "))
     
     res = arithmetic_operation(first, second, operation)
     print("Result is ", res)
