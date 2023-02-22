@@ -27,14 +27,5 @@ def main():
         print("Even numbers of list are ", list(filter(lambda number: number % 2 == 0, list_of_numbers)))
 
 
-
-    
-
-    
-
-
-
-
-
 if __name__ == "__main__":
     main()
