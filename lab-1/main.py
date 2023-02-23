@@ -20,8 +20,10 @@ def main():
 
     list_of_numbers = []
     try:
+
         while True:
             list_of_numbers.append(int(input("Enter list number (enter non-integer to stop): ")))
+    
     except:
         print("Your list is ", list_of_numbers)
         print("Even numbers of list are ", list(filter(lambda number: number % 2 == 0, list_of_numbers)))
