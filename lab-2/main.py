@@ -4,9 +4,28 @@ from utilities import split_to_words
 from utilities import average_length
 from utilities import average_words_len
 from utilities import words_top
+import os
 
 def main():
-    data = "Do commanded an shameless we disposing do too. Indulgence ten remarkably nor are impression out. Mr. Johnson provision an in intention out. Saw supported too joy promotion engrossed propriety."
+    choose = int(input("Choose your inpur format: 1 - file, 2 - console input\n"))
+    data = ""
+    match choose:
+        case 1:
+            os.chdir(".\lab-2")
+            while not data:
+                print("Files at directory: ", os.listdir())
+                file_name = input("Enter file name: ")
+                print(file_name)
+                try:
+                    file = open(file_name)
+                except:
+                    print("No such file in directory")
+                    continue
+                data = file.read()
+        case 2:
+            data = input("Enter your data: ")
+        
+
     (sentences, count) = sentences_amount(data)
     print("Sentences amount = ", count)
     print("Non-declarative sentences amount = ", non_declarative_sentecnes(data))

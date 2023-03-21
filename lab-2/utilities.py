@@ -52,7 +52,7 @@ def words_top(sentences: list, top_len = 10, word_len = 4):
                 top[word] += 1
     sorted_top = dict(sorted(top.items(),key=lambda item:item[1], reverse=True))
     while len(sorted_top) > top_len:
-        sorted_top.pop()
+        sorted_top.popitem()
 
     return sorted_top
 
