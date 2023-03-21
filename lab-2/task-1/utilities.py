@@ -1,18 +1,19 @@
 import re
 from collections import defaultdict
 
-pattern_sentences = r'(?<!Mr)[\.|!|?]+[\"|\“|\”]*\s*(?!$)'
-pattern_non_declarative = r'(?<!Mr)[|!|?]+\"*\s*(?!$)'
+pattern_sentences = r'(?<!Mr)(?<!Mrs)(?<!Ms)(?<!Mss)(?<!Dr)(?<!Lt)(?<!Rep)(?<!B)(?<!A)(?<!Ph)(?<!D)(?<!etc)(?<!P)(?<!M)[\.|!|?]+(?!com|by|ru|org)+[(\")|(\“)|(\”)]*\s*(?=$)*'
+pattern_non_declarative = r'(?<!Mr)(?<!Mrs)(?<!Ms)(?<!Mss)(?<!Dr)(?<!Lt)(?<!Rep)(?<!B)(?<!A)(?<!Ph)(?<!D)(?<!etc)(?<!P)(?<!M)[!|?]+(?!com|by|ru|org)+[(\")|(\“)|(\”)]*\s*(?=$)*'
 pattern_to_words = r"(\w+)"
 
 def sentences_amount(data: str):
     sentences = re.split(pattern_sentences, data)
-    
+    sentences.pop()
+    # print(sentences)
     return (sentences, len(sentences))
 
 
 def non_declarative_sentecnes(data: str):
-    amount = re.search(pattern_non_declarative, data)
+    amount = len(re.findall(pattern_non_declarative, data))
     return amount
 
 
