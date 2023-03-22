@@ -11,8 +11,8 @@ def main():
     data = ""
     match choose:
         case 1:
-            os.chdir(".\lab-2")
             while not data:
+                os.chdir("./lab-2/task-1")
                 print("Files at directory: ", os.listdir())
                 file_name = input("Enter file name: ")
                 print(file_name)
