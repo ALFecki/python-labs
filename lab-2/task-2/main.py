@@ -30,7 +30,38 @@ def main():
         if "save" in command:
             storage.save()
 
+        if "find" in command:
+            founded = storage.find(command)
+            if founded:
+                print("Founded is ", founded)
+            else:
+                print("No such elements")
+
+        if "grep" in command:
+            founded = storage.grep(command)
+            if founded:
+                print("Founded is ", founded)
+            else:
+                print("No such elements")
+
+        if "list" in command:
+            print("List of elements: ", storage.list_elements())
+
+        if "switch" in command:
+            save_desicion = input("You want to save data (y/n) >>>>")
+            if save_desicion == "y" or save_desicion == "":
+                storage.save()
+                
+            storage.switch(command)
+
+            load_desicion = input("You want to load data (y/n) >>>>")
+            if load_desicion == "y" or load_desicion == "":
+                storage.load()
+
         if "quit" in command:
+            save_desicion = input("You want to save data (y/n) >>>>")
+            if save_desicion == "y" or save_desicion == "":
+                storage.save()
             break   
 
 
