@@ -49,7 +49,7 @@ class Storage:
             print("User is not initialized")
             return
 
-        if not os.path.exists(".\storage.json"):
+        if not os.path.exists("storage.json"):
             storage_file = open("storage.json", "w+")
         with open("storage.json", "r+") as storage_file:
             
@@ -70,7 +70,7 @@ class Storage:
 
 
     def load(self):
-        if not os.path.exists(".\storage.json"):
+        if not os.path.exists("storage.json"):
             open("storage.json", "w+")
             print("File storage.json cannot find. File created")
             return
