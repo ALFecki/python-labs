@@ -39,7 +39,11 @@ class Storage:
         try:
             data = data.split(" ")[1]
             if len(data) > 0:
-                self.container.remove(data)
+                if next((item for item in self.container if data == item), None):
+                    self.container.remove(data)
+                else:
+                    print("No such element in set")
+                    return
         except:
             print("Invalid input")
             return
@@ -52,22 +56,21 @@ class Storage:
         if not os.path.exists("storage.json"):
             storage_file = open("storage.json", "w+")
         with open("storage.json", "r+") as storage_file:
-            
             try:
                 data_list = ujson.load(storage_file)
-                user_in_json = next((item for item in data_list if item['user'] == self.user), None)
+                user_in_json = next(
+                    (item for item in data_list if item["user"] == self.user), None
+                )
                 if user_in_json:
-                    self.container.update(set(user_in_json['container']))
+                    self.container.update(set(user_in_json["container"]))
                     data_list.remove(user_in_json)
-                
+
             except:
                 data_list = []
 
             data_list.append(self.serialize())
             storage_file.seek(0)
             ujson.dump(data_list, storage_file)
-
-
 
     def load(self):
         if not os.path.exists("storage.json"):
@@ -87,32 +90,29 @@ class Storage:
         if not self.isinitiaziled():
             print("User is not initialized")
             return
-        
+
         data = data.removeprefix("find ")
         return next((item for item in self.container if item == data), None)
-            
 
     def grep(self, regex: str):
         if not self.isinitiaziled():
             print("User is not initialized")
             return
-        
-        regex = fr'{regex.removeprefix("grep ")}'
+
+        regex = rf'{regex.removeprefix("grep ")}'
         founded_list = []
         for item in self.container:
             if re.match(regex, item):
                 founded_list.append(item)
 
         return founded_list
-        
+
     def list_elements(self):
         return self.container
-
 
     def switch(self, username: str):
         self.user = username.removeprefix("switch ")
         self.container = set()
-
 
     def serialize(self):
         return dict({"user": self.user, "container": list(self.container)})
