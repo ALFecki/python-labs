@@ -10,9 +10,9 @@ def main():
     choose = int(input("Choose your inpur format: 1 - file, 2 - console input\n"))
     data = ""
     match choose:
+
         case 1:
             while not data:
-                os.chdir("./lab-2/task-1")
                 print("Files at directory: ", os.listdir())
                 file_name = input("Enter file name: ")
                 print(file_name)
@@ -22,6 +22,7 @@ def main():
                     print("No such file in directory")
                     continue
                 data = file.read()
+    
         case 2:
             data = input("Enter your data: ")
         
