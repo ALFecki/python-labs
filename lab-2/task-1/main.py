@@ -22,6 +22,7 @@ def main():
                     print("No such file in directory")
                     continue
                 data = file.read()
+                file.close()
     
         case 2:
             data = input("Enter your data: ")
