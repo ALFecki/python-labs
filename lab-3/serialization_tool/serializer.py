@@ -1,18 +1,45 @@
-from constants import VALUE
-from constants import TYPE
-from constants import TYPES
-from constants import ITERABLE_TYPES
+import inspect
+from frozendict import frozendict
+from constants import *
 
 
 
 class Serializer:
     def serialize(self, obj):
         result = {}
-        
-        pass
 
-    def deserialize(self, obj):
-        pass
+        if inspect.isclass(obj):
+            pass
+        else:
+            object_type = type(obj)
+
+            if object_type == dict:
+                result = self.serialize_dict(obj)
+            elif isinstance(obj, (int, float, bool, complex, str, type(None))) or obj is None:
+                result = self.serialize_type(obj)
+            elif object_type == list or object_type == tuple or object_type == set or object_type == bytes:
+                result = self.serialize_iterable(obj)
+
+            # result[TYPE] = pass
+
+            return frozendict(result)
+
+    def deserialize(self, obj: dict):
+        try:
+            object_type : str = obj[TYPE]
+        except:
+            print("Type cannot be found")
+
+        result = object
+
+        if object_type == DICTIONARY:
+            result = self.deserialize_dict(obj)
+        elif object_type in TYPES:
+            result = self.deserialize_type(obj)
+        elif object_type in ITERABLE_TYPES:
+            result = self.deserialize_iterable(obj)
+
+        return result
 
 
     def serialize_type(self, obj):

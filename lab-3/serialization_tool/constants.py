@@ -3,6 +3,12 @@
 
 TYPE = "TYPE"
 VALUE = "VALUE"
+CLASS = "class"
+OBJECT = "object"
+DICTIONARY = "dict"
+FUNCTION = "function"
+CODE = "code"
+MODULE = "module"
 
 TYPES = [
     "int",
