@@ -1,16 +1,16 @@
 from frozendict import frozendict
-from constants import VALUE, TYPE, ARRAY_IN_ARRAY_REGEX, ARRAY_REGEX, VALUE_REGEX
+from .constants import VALUE, TYPE, ARRAY_IN_ARRAY_REGEX, ARRAY_REGEX, VALUE_REGEX
 import re
 
 
 def to_json(obj):
     ans = ""
     ans_list = []
-    float
+    flag = False
     if type(obj) == frozendict or type(obj) == dict:
         for key, value in obj.items():
             if key == VALUE or key == TYPE:
-                ans_list.append("" + to_json(obj) + ": " + to_json(value) + "")
+                ans_list.append("" + to_json(key) + ": " + to_json(value) + "")
                 flag = True
             else:
                 ans_list.append("[" + to_json(key) + ", " + to_json(value) + "]")
@@ -20,7 +20,7 @@ def to_json(obj):
             ans = "{" + ans + "}"
         else:
             ans = "[" + ans + "]"
-            return f"{ans}"
+        return f"{ans}"
     elif type(obj) == tuple:
         serialized = []
         for i in obj:

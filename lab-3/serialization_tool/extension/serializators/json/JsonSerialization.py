@@ -1,5 +1,5 @@
-from serialization_tool.extension.serializators.serialization import Serialization
-from utilities import to_json, from_json
+from ..serialization import Serialization
+from .utilities import to_json, from_json
 
 class JsonSerialization(Serialization):
     def dump(self, obj, file):

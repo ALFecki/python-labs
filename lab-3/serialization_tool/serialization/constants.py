@@ -1,6 +1,4 @@
 
-
-
 TYPE = "TYPE"
 VALUE = "VALUE"
 CLASS = "class"

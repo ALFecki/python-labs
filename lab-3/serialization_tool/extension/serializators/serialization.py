@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from serialization_tool.serializer import Serializer
+from serialization_tool.serialization.serializer import Serializer
 
 class Serialization(ABC):
     def __init__(self):

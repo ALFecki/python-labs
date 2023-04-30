@@ -1,6 +1,6 @@
 import inspect
 from frozendict import frozendict
-from constants import *
+from .constants import VALUE, TYPE, TYPES, ITERABLE_TYPES, DICTIONARY
 
 
 
