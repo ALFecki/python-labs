@@ -9,7 +9,9 @@ def main():
     
     json = Extension.get_file_extension("json")
     b = {2: 'a', 3: 'b'}
-    json.dump(b, "example.json")
+    a = 4
+    json.dump(a, "example.json")
+    print(json.loads("example.json"))
 
 
 

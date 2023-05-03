@@ -32,12 +32,12 @@ def to_json(obj):
 
 
 
-def from_json(str):
-    if str == "{}":
+def from_json(string):
+    if string == '{}':
         return frozendict()
-    elif str[0] == '{':
+    elif string[0] == '{':
         ans = dict()
-        string = str[1:len(str) - 1]
+        string = string[1:len(string) - 1]
         if re.match(ARRAY_IN_ARRAY_REGEX, string):
             temp =""
             flag = False
@@ -83,7 +83,9 @@ def from_json(str):
             ans_list = tuple(ans_list)
 
             for i in range(0, len(ans_list), 2):
+
                 ans[VALUE][ans_list[i]] = ans_list[i + 1]
+
             temp = ""
             for i in range(save_i + 11, len(string)):
                 if string[i] =='\"':
@@ -173,4 +175,4 @@ def from_json(str):
                 else:
                     temp += string[i]
                 i += 1
-            return frozendict(ans)
+        return frozendict(ans)
