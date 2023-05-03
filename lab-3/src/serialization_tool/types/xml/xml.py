@@ -1,4 +1,5 @@
-from serialization_tool.extension.serializators.serialization import Serialization
+from ..serialization import Serialization
+from .utilities import to_xml
 
 class XmlSerialization(Serialization):
     def dump(self, obj, file):
@@ -6,7 +7,8 @@ class XmlSerialization(Serialization):
             f.write(self.dumps(obj))
     
     def dumps(self, obj):
-        pass
+        return to_xml(self.serializer.serialize(obj))
+
 
     def load(self, file):
         with open(file, 'r') as f:

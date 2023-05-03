@@ -14,35 +14,6 @@ def to_json(obj) -> str:
     else:
         return f"\"{str(obj)}\""
 
-
-# def to_json(obj):
-#     ans = ""
-#     ans_list = []
-#     flag = False
-#     if type(obj) == frozendict or type(obj) == dict:
-#         for key, value in obj.items():
-#             if key == VALUE or key == TYPE:
-#                 ans_list.append("" + to_json(key) + ": " + to_json(value) + "")
-#                 flag = True
-#             else:
-#                 ans_list.append("[" + to_json(key) + ", " + to_json(value) + "]")
-#                 flag = False
-#         ans += ", ".join(ans_list)
-#         if flag:
-#             ans = "{" + ans + "}"
-#         else:
-#             ans = "[" + ans + "]"
-#         return f"{ans}"
-#     elif type(obj) == tuple:
-#         serialized = []
-#         for i in obj:
-#             serialized.append(f"{to_json(i)}")
-#         ans = ", ".join(serialized)
-#         return f"[{ans}]"
-#     else:
-#         return f"\"{str(obj)}\""
-
-
 def from_json(obj: str):
     if obj == '[]':
         return tuple()

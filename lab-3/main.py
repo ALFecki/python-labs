@@ -24,15 +24,17 @@ def main():
     a = 4
     b = 2.5
 
-    test = Test("Hello")
-    json.dump(test, "test.json")
-    result = json.load("test.json")
+    xml = SerializationFactory.get_serializer("xml")
+    xml.dump(a, "test.xml")
+    # test = Test("Hello")
+    # json.dump(test, "test.json")
+    # result = json.load("test.json")
     # json.dump([a, b, c], "example.json")
     # json.dump(Test, "example.json")
     # # print(json.load("example.json"))
     # test = json.load("example.json")
     # some = test("Hello")
-    print(result.get_title())
+    # print(result.get_title())
 
 
 if __name__ == "__main__":
