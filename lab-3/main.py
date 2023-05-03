@@ -3,14 +3,14 @@ import sys
 sys.path.append("..")
 
 
-from serialization_tool.extension.extension import Extension
+from serialization_tool.serialization_factory import SerializationFactory
 
 def add(a, b):
     return a + b
 
 def main():
     
-    json = Extension.get_file_extension("json")
+    json = SerializationFactory.get_file_extension("json")
     c = {2: 'a', 3: 'b'}
     a = 4
     b = 2.5

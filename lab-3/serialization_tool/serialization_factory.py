@@ -1,9 +1,9 @@
-from serialization_tool.extension.serializators.json.JsonSerialization import JsonSerialization
+from serialization_tool.types.json.json import JsonSerialization
 
 from .constants import *
 
 
-class Extension:
+class SerializationFactory:
     def get_file_extension(ext: str):
         return JsonSerialization()
 
