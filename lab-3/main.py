@@ -9,6 +9,14 @@ from serialization_tool.serialization_factory import SerializationFactory
 def add(a, b):
     return a + b
 
+class Test:
+    def __init__(self, title = "class_test"):
+        self.title = title
+
+    def get_title(self):
+        return self.title
+    
+
 
 def main():
     json = SerializationFactory.get_serializer("json")
@@ -16,9 +24,15 @@ def main():
     a = 4
     b = 2.5
 
+    test = Test("Hello")
+    json.dump(test, "test.json")
+    result = json.load("test.json")
     # json.dump([a, b, c], "example.json")
-    json.dump(add, "example.json")
-    print(json.load("example.json")(2, 3))
+    # json.dump(Test, "example.json")
+    # # print(json.load("example.json"))
+    # test = json.load("example.json")
+    # some = test("Hello")
+    print(result.get_title())
 
 
 if __name__ == "__main__":
