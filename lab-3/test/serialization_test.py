@@ -106,12 +106,3 @@ def test_class():
     result = test_response("Hello")
     assert(result.get_title() == test.get_title())
 
-
-# def test_object():
-#     json = SerializationFactory.get_serializer("json")
-
-#     test = Test("Hello")
-#     json.dump(test, "test.json")
-#     result = json.load("test.json")
-#     assert(test.test_title == result.test_title)
-#     assert(test.get_title() == result.get_title())
