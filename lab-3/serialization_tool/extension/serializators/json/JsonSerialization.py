@@ -14,4 +14,6 @@ class JsonSerialization(Serialization):
             return self.loads(f.read())
         
     def loads(self, str):
-        return self.serializer.deserialize(from_json(str))
+        obj = from_json(str.replace("\\n", "\n"))
+
+        return self.serializer.deserialize(obj)

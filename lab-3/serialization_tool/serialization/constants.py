@@ -12,7 +12,9 @@ BASE = "base"
 DATA = "data"
 
 NAME = "__name__"
+BUILTINS = "__builtins__"
 CLOSURE = "__closure__"
+DOC = "__doc__"
 GLOBALS = "__globals__"
 OBJECT_NAME = "__object_type__"
 FIELDS_NAME = "__fields__"
@@ -49,4 +51,23 @@ CLASS_ATTRIBUTE_NAMES = ["__class__",
                          "__getattribute__",
                          "__new__",
                          "__setattr__"
+]
+
+CODE_OBJECT_ARGS = [
+    'co_argcount',
+    'co_posonlyargcount',
+    'co_kwonlyargcount',
+    'co_nlocals',
+    'co_stacksize',
+    'co_flags',
+    'co_code',
+    'co_consts',
+    'co_names',
+    'co_varnames',
+    'co_filename',
+    'co_name',
+    'co_firstlineno',
+    'co_lnotab',
+    'co_freevars',
+    'co_cellvars'
 ]
