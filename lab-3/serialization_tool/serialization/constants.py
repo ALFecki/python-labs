@@ -20,7 +20,7 @@ OBJECT_NAME = "__object_type__"
 FIELDS_NAME = "__fields__"
 MODULE_NAME = "__module__name__"
 
-CODE = "code"
+CODE = "__code__"
 MODULE = "module"
 
 TYPES = [
@@ -51,6 +51,13 @@ CLASS_ATTRIBUTE_NAMES = ["__class__",
                          "__getattribute__",
                          "__new__",
                          "__setattr__"
+]
+
+NOT_CLASS_ATTRIBUTES = [
+    "__class__",
+    "__getattribute__",
+    "__new__",
+    "__setattr__",
 ]
 
 CODE_OBJECT_ARGS = [

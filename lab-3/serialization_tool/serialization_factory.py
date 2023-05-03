@@ -1,16 +1,18 @@
 from serialization_tool.types.json.json import JsonSerialization
 
-from .constants import *
+# import constants as const
 
 
 class SerializationFactory:
-    def get_file_extension(ext: str):
+    def get_serializer(ext: str):
         return JsonSerialization()
-
-        match ext:
-            case constants.JSON_EXT:
-                return JsonSerialization()
-            case constants.XML_EXT:
-                pass
-            case _:
-                pass
+        # match ext:
+        #     case const.JSON_EXT:
+        #         return JsonSerialization()
+            
+        #     case const.XML_EXT:
+        #         pass
+            
+        #     case _:
+        #         print("Unknown type")
+                

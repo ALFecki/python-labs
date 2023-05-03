@@ -1,2 +1,2 @@
 JSON_EXT: str = "json"
-XML_EXT: str = "ext"
+XML_EXT: str = "xml"
