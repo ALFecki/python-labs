@@ -61,7 +61,7 @@ class Serializer:
         result = dict()
         result[TYPE] = DICTIONARY
         result[VALUE] = {}
-        
+
         for key, value in obj.items():
             key_result = self.serialize(key)
             value_result = self.serialize(value)
@@ -112,7 +112,7 @@ class Serializer:
     
     def serialize_class(self, obj):
         ans = dict()
-        ans[TYPE] =CLASS
+        ans[TYPE] = CLASS
         ans[VALUE] = {}
         ans[VALUE][self.serialize(NAME)] = self.serialize(obj.__name__)
         members = []
