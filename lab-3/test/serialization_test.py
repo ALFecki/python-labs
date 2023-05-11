@@ -1,4 +1,4 @@
-from serialization_tool.serialization_factory import SerializationFactory
+from src.serialization_tool.serialization_factory import SerializationFactory
 import pytest
 import math
 

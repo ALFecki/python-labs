@@ -1,4 +1,3 @@
-from frozendict import frozendict
 from .constants import VALUE, TYPE, ARRAY_IN_ARRAY_REGEX, ARRAY_REGEX, VALUE_REGEX
 import re
 
@@ -14,16 +13,16 @@ def to_json(obj) -> str:
     else:
         return f"\"{str(obj)}\""
 
-def from_json(obj: str):
-    if obj == '[]':
+def from_json(data: str):
+    if data == '[]':
         return tuple()
-    elif obj[0] == '[':
-        obj = obj[1:len(obj) - 1]
+    elif data[0] == '[':
+        data = data[1:len(data) - 1]
         parsed = []
         depth = 0
         quote = False
         substr = ""
-        for i in obj:
+        for i in data:
             if i == '[':
                 depth += 1
             elif i == ']':
@@ -42,7 +41,7 @@ def from_json(obj: str):
         parsed.append(from_json(substr))
         return tuple(parsed)
     else:
-        return obj[1:len(obj) - 1]
+        return data[1:len(data) - 1]
 
 
 # def from_json(string):
