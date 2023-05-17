@@ -9,7 +9,9 @@ class XmlSerialization(Serialization):
             f.write(self.dumps(obj))
 
     def dumps(self, obj):
-        return to_xml(self.serializer.serialize(obj)).replace(
+        res = to_xml(self.serializer.serialize(obj)).replace('\n', '\n\t')
+        res = "\n<tuple>" + res + "\n</tuple>"
+        return res.replace(
             "\n", '<?xml version="1.0" encoding="utf-8"?>\n', 1
         )
 
@@ -18,6 +20,6 @@ class XmlSerialization(Serialization):
             return self.loads(f.read())
 
     def loads(self, data: str):
-        separated = data.split("\n")
-        print(from_xml(separated[1 : len(separated) - 1]))
-        return self.serializer.deserialize(from_xml(separated[1 : len(separated) - 1]))
+        data = data.replace('<?xml version="1.0" encoding="utf-8"?>\n', '')
+        data = data.replace('\n', '').replace('\t', '')
+        return self.serializer.deserialize(from_xml(data))

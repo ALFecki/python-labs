@@ -26,7 +26,7 @@ def main():
 
     xml = SerializationFactory.get_serializer("xml")
     json.dump(c, "test.json")
-    json.load("test.json")
+    print(json.load("test.json"))
     xml.dump(c, "test.xml")
     test = xml.load("test.xml")
     print(test)
