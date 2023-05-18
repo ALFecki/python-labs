@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="serialization_tool",
-    version="0.5",
+    version="1.0",
     license="GNU GENERAL PUBLIC LICENSE",
     author="Alexander Skvortsov",
     author_email="alexskvr03@gmail.com",
