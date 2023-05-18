@@ -216,23 +216,7 @@ class Serializer:
         if object_type == TYPES[2] and isinstance(obj, str):
             return obj == "True"
 
-        return locate(object_type)(obj)
-            # result = object
-
-        # if object_type == TYPES[0]:
-        #     result = int(obj)
-        # elif object_type == TYPES[1]:
-        #     result = float(obj)
-        # elif object_type == TYPES[2]:
-        #     result = (obj == "True")
-        # elif object_type == TYPES[4]:
-        #     result = complex(obj)
-        # elif object_type == TYPES[5]:
-        #     result = None
-        # else:
-        #     result = obj
-
-        # return result      
+        return locate(object_type)(obj)    
 
 
     def deserialize_iterable(self, object_type, obj):
@@ -259,16 +243,6 @@ class Serializer:
             result[self.deserialize(i[0])] = val
 
         return result
-        # result = {}
-        # if (type(obj[VALUE]) == tuple):
-        #     return result
-        
-        # for key, value in obj[VALUE].items():
-        #     key_result = self.deserialize(key)
-        #     value_result = self.deserialize(value)
-        #     result[key_result] = value_result
-        
-        # return result
     
 
     def deserialize_function(self, object_type, foo):
