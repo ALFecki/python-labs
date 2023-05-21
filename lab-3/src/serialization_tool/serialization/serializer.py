@@ -39,7 +39,6 @@ class Serializer:
 
         return serialized
 
-    # fn to serialize primitive types
     def serialize_type(self, obj):
         
         result = dict()
@@ -116,6 +115,7 @@ class Serializer:
         ans[VALUE] = {}
         ans[VALUE][self.serialize(NAME)] = self.serialize(obj.__name__)
         members = []
+        
         for i in inspect.getmembers(obj):
             if not (i[0] in NOT_CLASS_ATTRIBUTES):
                 members.append(i)
@@ -132,6 +132,7 @@ class Serializer:
     def serialize_object(self, some_object):
         class_obj = type(some_object)
         result = dict()
+        
         result[TYPE] = OBJECT
         result[VALUE] = {}
         result[VALUE][self.serialize(OBJECT_NAME)] = self.serialize(class_obj)
@@ -144,10 +145,11 @@ class Serializer:
     def serialize_instance(self, obj):
         result = dict()
         result[TYPE] = re.search(REGEX_TYPE, str(type(obj))).group(1)
-
         result[VALUE] = {}
+        
         members = inspect.getmembers(obj)
         members = [i for i in members if not callable(i[1])]
+        
         for i in members:
             key = self.serialize(i[0])
             val = self.serialize(i[1])
@@ -163,14 +165,15 @@ class Serializer:
 
         ans = dict()
         ans[TYPE] = re.search(REGEX_TYPE, str(type(obj))).group(1)
-
         ans[VALUE] = {}
+        
         members = inspect.getmembers(obj)
         members = [i for i in members if not callable(i[1])]
         for i in members:
             key = self.serialize(i[0])
             val = self.serialize(i[1])
             ans[VALUE][key] = val
+        
         ans[VALUE] = tuple((k, ans[VALUE][k]) for k in ans[VALUE])
 
         return ans
