@@ -15,6 +15,7 @@ def sentences_amount(data: str):
 
 def non_declarative_sentecnes(data: str):
     amount = len(re.findall(pattern_non_declarative, data))
+
     return amount
 
 
@@ -23,6 +24,7 @@ def split_to_words(sentence: str):
     for word in words:
         if word.isdigit():
             words.remove(word)
+            
     return words
 
 

@@ -30,6 +30,9 @@ def main():
         if "save" in command:
             storage.save()
 
+        if "load" in command:
+            storage.load()
+
         if "find" in command:
             founded = storage.find(command)
             if founded:

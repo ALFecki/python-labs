@@ -24,10 +24,11 @@ class Storage:
 
         data = data.removeprefix("add ")
         if len(data) > 0:
-            if next((item for item in self.container if item == data), None):
-                print("These element already exists")
-                return
-            self.container.add(data)
+            for elem in data.split(" "):
+                if next((item for item in self.container if item == elem), None):
+                    print("These element already exists")
+                    continue
+                self.container.add(elem)
         else:
             print("Invalid input")
 
@@ -92,7 +93,12 @@ class Storage:
             return
 
         data = data.removeprefix("find ")
-        return next((item for item in self.container if item == data), None)
+        founded_list = []
+        for elem in data.split(" "):
+            founded_list.append(
+                next((item for item in self.container if item == elem), None)
+            )
+        return founded_list
 
     def grep(self, regex: str):
         if not self.isinitiaziled():
@@ -122,4 +128,4 @@ class Storage:
             print("No such user")
             return
         self.user = input["user"]
-        self.container = set(input["container"])
+        self.container.update(set(input["container"]))
