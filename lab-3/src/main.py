@@ -24,10 +24,10 @@ def main():
     b = Test()
 
     xml = SerializationFactory.get_serializer("xml")
-    json.dump(b, "test.json")
+    json.dump(c, "test.json")
     # print(json.load("test.json"))
     res = json.load("test.json")
-    print(res.get_title())
+    print(res)
     # xml.dump(b, "test.xml")
     # test = xml.load("test.xml")
     # print(test.get_title())
