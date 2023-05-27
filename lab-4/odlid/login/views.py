@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from .forms import RegistrationForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.views.generic.edit import FormView
 from django.contrib.auth.forms import AuthenticationForm
 from .models import Client
@@ -12,23 +12,31 @@ class LoginView(FormView):
     form_class = AuthenticationForm
 
     template_name = "login.html"
+    
 
-    quote = requests.get("https://favqs.com/api/qotd").json()
+    joke = requests.get("https://official-joke-api.appspot.com/random_joke").json()
 
     def get(self, request):
         return render(
             request,
             "login.html",
-            context={"form": self.form_class(), "quote": self.quote["quote"]["body"]},
+            context={"form": self.form_class(), "joke_setup": self.joke["setup"], "joke_punchline": self.joke["punchline"]},
         )
 
-    success_url = "/register"
+    success_url = "/"
+
+    def form_valid(self, form):
+        self.user = form.get_user()
+
+        login(self.request, self.user)
+        print('Session is activated')
+        return super(LoginView, self).form_valid(form)
 
 
 class RegistrationView(FormView):
     form_class = RegistrationForm
 
-    success_url = '/'
+    success_url = '/login'
     template_name = 'registration.html'
 
     def form_valid(self, form) -> HttpResponse:
@@ -43,23 +51,13 @@ class RegistrationView(FormView):
         return super(RegistrationView, self).form_valid(form)
     
     def form_invalid(self, form) -> HttpResponse:
+        print('Form is invalid')
         return super(RegistrationView, self).form_invalid(form)
 
 
-# def user_login(request):
-#     if request.method == 'POST':
-#         form = LoginForm(request.POST)
-#         if form.is_valid():
-#             cd = form.cleaned_data
-#             user = authenticate(username=cd['username'], password=cd['password'])
-#             if user != None:
-#                 if user.is_active():
-#                     login(request, user)
-#                     return HttpResponse('Authenticated successfully')
-#                 else:
-#                     return HttpResponse('Disabled account')
-#             else:
-#                 return HttpResponse('Invalid login')
-#     else:
-#         form = LoginForm()
-#     return render(request, 'login.html', {'form': form})
+
+class LogoutView(FormView):
+    def get(self, request):
+        logout(request)
+
+        return HttpResponseRedirect('/')
