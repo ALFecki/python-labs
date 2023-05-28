@@ -1,8 +1,8 @@
 import django_tables2 as tables
-from .models import Product
+from .models import ProductCategory
 
 class ProductTable(tables.Table):
     class Meta:
-        model = Product
+        model = ProductCategory
         template_name = "django_tables2/bootstrap.html"
-        fields = ("name", 'code', 'is_prod')
+        fields = ("image", "name")
