@@ -1,0 +1,72 @@
+{% extends 'base.html'%}
+{% load static %}
+
+
+{% block css%}
+<link rel="stylesheet" href="{% static 'toys.css' %}">
+{% endblock %}
+
+
+
+{% block content %}
+<br><br>
+<section class="container">
+    <ol class="category-list">
+        <li class="item">
+            <a href="{% url 'home:toys_list' %}">
+                <div class="category-name">All</div>
+            </a>
+        </li>
+        {% for c in categories %}
+
+        <li class="item">
+            <a href="{{ c.get_url }}">
+                <div class="category-name">{{ c.name }}</div>
+            </a>
+        </li>
+        {% endfor %}
+    </ol>
+
+    <div class="toys-list">
+        <!-- <h1>{% if genre %}{{ genre.name }}{% else %}Book{% endif %}
+        {% if user.is_staff %}
+        <a href="/create/">Create Product</a>
+        {% endif %}
+        {%if user.is_superuser%}
+        <a href="/statistic/">statistic</a>
+        {%endif%}
+
+    </h1> -->
+    
+    <label>{% if category %}{{ category }}{% else %}All{% endif %}</label>
+    
+
+        <form action="{{ request.get_full_path }}" method="get">
+            <button type="submit" name="sort" value="ascending">Сортировать по возрастанию</button>
+            <button type="submit" name="sort" value="descending">Сортировать по убыванию</button>
+        </form>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Code</th>
+                <th>Cost</th>
+                <th>In Production</th>
+            </tr>
+
+            {% for toy in toys %}
+            <tr>
+                <div class="item">
+                    <td><a href="{{ toy.get_url }}">
+                            <div class="toy-name">{{ toy.name }}</div>
+                        </a></td>
+                    <td>{{ toy.code }}</td>
+                    <td>{{ toy.cost }}</td>
+                    <td>{{ to.in_prod }}</td>
+                </div>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</section>
+
+{% endblock %}

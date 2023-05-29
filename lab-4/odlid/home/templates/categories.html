@@ -1,3 +1,23 @@
-<ul data-role="listview" data-view="icons-large">
-    
-</ul>
+{% extends 'base.html'%}
+{% load static %}
+
+{% block css%}
+<link rel="stylesheet" href="{% static 'categories.css'%}">
+{%endblock%}
+
+{% block content %}
+<br><br>
+<div class="categories-list">
+    {% for category in categories %}
+
+    <div class="item">
+        <a href="{{ category.get_url }}">
+            <img
+                src="{% if category.image %} {{ category.image.url }} {% else %} {% static 'images/no_image.svg' %}{% endif %}">
+
+            <div class="category-name">{{ category.name }}</div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

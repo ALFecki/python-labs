@@ -1,0 +1,31 @@
+.categories-list {
+    list-style: none;
+    display: grid;
+    padding: 0;
+    margin: 0;
+
+    position: relative;
+    text-align: center;
+
+    grid-template-columns: repeat(6, 230px);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 15px;
+    grid-column-gap: 0px;
+}
+
+img {
+    max-width: 200px;
+    max-height: 350px;
+}
+
+.item {
+    height: fit-content;
+    width: fit-content;
+}
+
+.category-name {
+    position: relative;
+    text-align: center;
+    width: 370px;
+    height: fit-content;
+}

@@ -27,20 +27,9 @@ label {
     padding-right: 5px;
 }
 
-input {
-    /* display: block;
-    margin-right: auto; */
-}
-
-/* div {
-    text-align: center;
-    vertical-align: middle;
-} */
-
 #wrap {
     width: 100%;
     margin: 0 auto;
-    /* padding: 0 15px; */
 }
 
 #content {

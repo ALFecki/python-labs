@@ -1,13 +1,17 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 import datetime
+from django.urls import reverse
 
 
 class ProductCategory(models.Model):
     name = models.CharField(max_length=200, 
                             help_text='Enter category name')
     
-    image = models.ImageField(upload_to='resources/images', blank=True)
+    image = models.ImageField(upload_to='resources/images', blank=True, null=True)
+
+    def get_url(self):
+        return reverse('home:toys_list_by_category', args=[str(self.id)])
     
 
 class ProductModel(models.Model):
