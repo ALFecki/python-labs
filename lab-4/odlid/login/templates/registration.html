@@ -1,13 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Sign up</title>
-    </head>
-    <body>
-        <form action = "" method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Sign up</button>
-        </form>
-    </body>
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'register.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<head>
+    <title>Sign up</title>
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="content">
+            <form action="" method="POST">
+                <br><br><br>
+                {% csrf_token %}
+                    {{ form.as_p }}
+                <div class="button_container">
+                    <button class="button_sign_up" type="submit">Sign up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+{% endblock %}
+
 </html>

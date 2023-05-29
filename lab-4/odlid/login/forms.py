@@ -5,13 +5,27 @@ from .models import Client
 
 
 class RegistrationForm(UserCreationForm):
+    username = forms.CharField(min_length=4, max_length=20)
     email = forms.EmailField(required=True)
-    unique_code = forms.IntegerField(
-        required=True, help_text="Enter your company unique code"
-    )
+    unique_code = forms.IntegerField(required=True)
     phone = PhoneNumberField(region="BY")
-    city = forms.CharField(max_length=50, help_text="Enter the city of your company")
-    address = forms.CharField(max_length=50, help_text="Enter your company address")
+    city = forms.CharField(
+        max_length=50,
+    )
+    address = forms.CharField(max_length=50)
+    password1 = forms.CharField(label = 'Password', widget=forms.PasswordInput)
+    password2 = forms.CharField(label = 'Confirm Password',widget=forms.PasswordInput)
+
+    field_order = [
+        "username",
+        "email",
+        "unique_code",
+        "phone",
+        "city",
+        "address",
+        "password1",
+        "password2",
+    ]
 
     class Meta:
         model = Client
@@ -24,6 +38,19 @@ class RegistrationForm(UserCreationForm):
             "address",
             "password1",
             "password2",
+        }
+        labels = {"user_name": "*Username", "password": "*Password"}
+        widgets = {
+            "user_name": forms.TextInput(
+                attrs={"placeholder": "ex:test", "autocomplete": "off"}
+            ),
+            "password": forms.PasswordInput(
+                attrs={
+                    "placeholder": "********",
+                    "autocomplete": "off",
+                    "data-toggle": "password",
+                }
+            ),
         }
 
     def save(self, commit: bool = ...):

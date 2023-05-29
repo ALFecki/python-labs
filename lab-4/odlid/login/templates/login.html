@@ -5,7 +5,7 @@
 <html>
 
 {% block css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
 {% endblock %}
 
 
@@ -16,25 +16,27 @@
 </head>
 
 <body>
-    <br><br><br><br><br><br><br><br>
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <div>
-            <button class="button_sign_in" type="submit">Sign in</button>
-        </div>
-    </form>
-
-</body>
-<tail>
+    <br><br><br><br><br><br><br><br><br>
+    <div class="wrapper">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div>
+                <button class="button_sign_in" type="submit">Sign in</button>
+            </div>
+        </form>
+        <div id="push"></div>
+    </div>
     <div class="bottom-right">
-        <br><br><br><br>
+        <br><br><br>
         <p>Random joke :D<br>
-            Setup: {{ joke_setup }}<br>
-            Punchline: {{ joke_punchline }}
+            {{ joke_setup }}<br>
+            {{ joke_punchline }}
         </p>
     </div>
-</tail>
+</body>
+
+
 {% endblock %}
 
 </html>

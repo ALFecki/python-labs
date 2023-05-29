@@ -20,16 +20,37 @@ h1 {
 }
 
 p {
-    text-align: center;
     vertical-align: middle;
 }
-
-div {
-    text-align: center;
-    vertical-align: middle;
+label {
+    float:left;
+    padding-right: 5px;
 }
 
-.button_sign_in {
+input {
+    /* display: block;
+    margin-right: auto; */
+}
+
+/* div {
+    text-align: center;
+    vertical-align: middle;
+} */
+
+#wrap {
+    width: 100%;
+    margin: 0 auto;
+    /* padding: 0 15px; */
+}
+
+#content {
+    text-align: right;
+    max-width: 350px;
+    margin: 0 auto;
+}
+
+
+.button_sign_up {
     padding: 15px 32px;
     border-radius: 8px;
     background-color: green;
@@ -39,14 +60,6 @@ div {
     font-size: medium;
 }
 
-#wrapper {
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    margin-bottom: -100px;
-}
-
-#bottom-right,
-#push {
-    height: 100px;
+.button_container {
+    text-align: center;
 }
