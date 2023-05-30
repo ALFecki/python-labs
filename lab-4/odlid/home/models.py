@@ -42,6 +42,9 @@ class Product(models.Model):
     in_prod = models.BooleanField(help_text='Enter is product in production')
     
     category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE, null=True)
+
+    def get_edit_url(self):
+        return reverse('home:edit', args=[str(self.id)])
     
     
 

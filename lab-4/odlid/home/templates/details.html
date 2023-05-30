@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="product-detail">
+    <img src="{% if product.image %}{{ product.image.url }}{% else %}
+    {% static 'images/no_image.svg' %}{% endif %}">
+    <h1>{{ product.name }}</h1>
+    <h2>
+        <a href="{{ product.category.get_url }}">{{product.category }}</a>
+    </h2>
+    <p class="cost">{{ product.cost }}</p>
+
+    
+    <!-- {{ book.summary|linebreaks }} -->
+    {%if user.is_staff%}
+    <td><a href="{{ product.get_edit_url }}">Edit</a> | <a href="delete/{{peoduct.id}}/">Remove</a></td>
+    {%endif%}
+    <!-- <div class="bottom-right">
+        <p>{{ joke }}</p>
+    </div> -->
+    
+
+    
+</div>
+{% endblock %}
