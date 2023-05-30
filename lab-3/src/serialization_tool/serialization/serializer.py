@@ -7,54 +7,54 @@ from pydoc import locate
 
 
 class Serializer:
-    def create_serializer(self, obj):
+    def serialize(self, obj) -> dict:
         if isinstance(obj, (float, int, complex, bool, str, type(None))):
-            return self.serialize_type
+            return self.serialize_type(obj)
 
         if isinstance(obj, (list, tuple, bytes, set, bytearray)):
-            return self.serialize_iterable
+            return self.serialize_iterable(obj)
 
         if isinstance(obj, dict):
-            return self.serialize_dict
+            return self.serialize_dict(obj)
 
         if inspect.isfunction(obj):
-            return self.serialize_function
+            return {TYPE: type(obj).__name__, VALUE:  self.serialize_function(obj)}
 
         if inspect.iscode(obj):
-            return self.serialize_code
+            return self.serialize_code(obj)
 
         if isinstance(obj, CellType):
-            return self.serialize_cell
+            return self.serialize_cell(obj)
 
         if inspect.isclass(obj):
-            return self.serialize_class
+            return self.serialize_class(obj)
 
         if isinstance(obj, property):
-            return self.serialize_property
+            return self.serialize_property(obj)
 
         if (
             hasattr(obj, "__iter__")
             and hasattr(obj, "__next__")
             and callable(obj.__iter__)
         ):
-            return self.serialize_iterator
+            return self.serialize_iterator(obj)
 
         if inspect.ismethod(obj):
-            return self.serialize_method
+            return self.serialize_method(obj)
 
-        return self.serialize_object
+        return self.serialize_object(obj)
 
-    def serialize(self, obj):
-        serializer = self.create_serializer(obj)
-        serialized = serializer(obj)
-        serialized = tuple((k, serialized[k]) for k in serialized)
+    # def serialize(self, obj):
+    #     serializer = self.create_serializer(obj)
+    #     serialized = serializer(obj)
+    #     serialized = tuple((k, serialized[k]) for k in serialized)
 
-        return serialized
+    #     return serialized
 
     def serialize_type(self, obj):
         result = dict()
 
-        result[TYPE] = (type(obj).__name__,)
+        result[TYPE] = type(obj).__name__
         result[VALUE] = str(obj) if isinstance(obj, complex) else obj
 
         return result
@@ -78,8 +78,7 @@ class Serializer:
 
     def serialize_function(self, function_object, _class=None):
         result = dict()
-        result[TYPE] = type(function_object).__name__
-        result[VALUE] = {
+        result = {
             FUNCTION_ATTRIBUTES[0]: function_object.__name__,
             FUNCTION_ATTRIBUTES[1]: self.serialize_globals(function_object, _class),
             FUNCTION_ATTRIBUTES[2]: self.serialize(function_object.__closure__),
@@ -118,7 +117,8 @@ class Serializer:
     def serialize_class(self, obj):
         result = dict()
         result[TYPE] = CLASS
-        result["__name__"] = self.serialize(obj.__name__)
+        packed = dict()
+        packed["__name__"] = self.serialize(obj.__name__)
 
         for key, value in obj.__dict__.items():
             if (
@@ -128,36 +128,37 @@ class Serializer:
                 continue
 
             if isinstance(obj.__dict__[key], staticmethod):
-                result[key] = dict()
-                result[key][TYPE] = "staticmethod"
-                result[key][VALUE] = {
+                packed[key] = dict()
+                packed[key][TYPE] = "staticmethod"
+                packed[key][VALUE] = {
                     TYPE: "function",
                     VALUE: self.serialize_function(value.__func__, obj),
                 }
             elif isinstance(obj.__dict__[key], classmethod):
-                result[key] = dict()
-                result[key][TYPE] = "classmethod"
-                result[key][VALUE] = {
+                packed[key] = dict()
+                packed[key][TYPE] = "classmethod"
+                packed[key][VALUE] = {
                     TYPE: "function",
                     VALUE: self.serialize_function(value.__func__, obj),
                 }
 
             elif inspect.ismethod(value):
-                result[key] = self.serialize_function(value.__func__, obj)
+                packed[key] = self.serialize_function(value.__func__, obj)
 
             elif inspect.isfunction(value):
-                result[key] = dict()
-                result[key][TYPE] = "function"
-                result[key][VALUE] = self.serialize_function(value, obj)
+                packed[key] = dict()
+                packed[key][TYPE] = "function"
+                packed[key][VALUE] = self.serialize_function(value, obj)
 
             else:
-                result[key] = self.serialize(value)
+                packed[key] = self.serialize(value)
 
-        result["__bases__"] = dict()
-        result["__bases__"][TYPE] = "tuple"
-        result["__bases__"][VALUE] = [
+        packed["__bases__"] = dict()
+        packed["__bases__"][TYPE] = "tuple"
+        packed["__bases__"][VALUE] = [
             self.serialize(item) for item in obj.__bases__ if item != object
         ]
+        result[VALUE] = packed
         return result
 
     def serialize_object(self, obj):
@@ -197,7 +198,7 @@ class Serializer:
 
     def serialize_property(self, obj):
         result = dict()
-        result[TYPE] = obj.__name__
+        result[TYPE] = type(obj).__name__
         result[VALUE] = {
             "fget": self.serialize(obj.fget),
             "fset": self.serialize(obj.fset),
@@ -217,66 +218,54 @@ class Serializer:
         result[VALUE] = self.serialize_function(obj.__func__)
         return result
 
-    def create_deserializer(self, object_type):
+    def deserialize(self, obj):
+        object_type = obj[TYPE]
         
-        if object_type in TYPES:
-            return self.deserialize_type
+        if object_type in tuple(map(lambda p: p.__name__, PRIMITIVES)):
+            if object_type == str(types.NoneType.__name__):
+                return None
+            else:
+                return self.deserialize_type(obj)
         
-        if object_type == DICTIONARY:
-            return self.deserialize_dict
+        if object_type == dict.__name__:
+            return self.deserialize_dict(obj[VALUE])
         
-        if object_type in ITERABLE_TYPES:
-            return self.deserialize_iterable
+        if object_type in tuple(map(lambda c: c.__name__, COLLECTIONS)):
+            return self.deserialize_iterable(obj)
         
         if object_type in [FunctionType.__name__, MethodType.__name__]:
-            return self.deserialize_function
+            return self.deserialize_function(obj[VALUE])
         
         if object_type == CodeType.__name__:
-            return self.deserialize_code
+            return self.deserialize_code(obj[VALUE])
         
-        if object_type == CellType.__name__:
-            return CellType(self.deserialize)
-        
-        if object_type == CLASS:
-            return self.deserialize_class
-        
-        if object_type in tuple(map(lambda md: md.__name__, METHOD_DECORATORS)):
-            return self.deserialize_method
-        
-        if object_type == property.__name__:
-            return self.deserialize_property
-        
-        if object_type == ITERATOR:
-            return self.deserialize_iterator
-        
-        return self.deserialize_object
-
-
-    def deserialize(self, obj):
-        obj = dict((a, b) for a, b in obj)
-        object_type = obj[TYPE]
         if object_type == CellType.__name__:
             return CellType(self.deserialize(obj[VALUE]))
         
-        deserializer = self.create_deserializer(object_type)
+        if object_type == CLASS:
+            return self.deserialize_class(obj[VALUE])
+        
+        if object_type in tuple(map(lambda md: md.__name__, METHOD_DECORATORS)):
+            return self.deserialize_method(obj)
+        
+        if object_type == property.__name__:
+            return self.deserialize_property(obj[VALUE])
+        
+        if object_type == ITERATOR:
+            return self.deserialize_iterator(obj[VALUE])
+        
+        return self.deserialize_object(obj[VALUE])
 
-        if deserializer is None:
-            return
 
-        return deserializer(object_type, obj[VALUE])
+    def deserialize_type(self, obj):
+        return getattr(builtins, obj[TYPE])(obj[VALUE])
 
-    def deserialize_type(self, object_type, obj):
-        if object_type == TYPES[5]:
-            return None
-        else:
-            return getattr(builtins, obj[TYPE])(obj[VALUE])
-
-    def deserialize_iterable(self, object_type, obj):
+    def deserialize_iterable(self, obj):
         return getattr(builtins, obj[TYPE])(
             self.deserialize(item) for item in obj[VALUE]
         )
 
-    def deserialize_dict(self, object_type, obj: dict):
+    def deserialize_dict(self, obj: dict):
         result = {}
         for i in obj:
             val = self.deserialize(i[1])
@@ -284,8 +273,8 @@ class Serializer:
 
         return result
 
-    def deserialize_function(self, object_type, foo):
-        code = self.deserialize_code(foo["__code__"])
+    def deserialize_function(self, foo):
+        code = self.deserialize_code(foo["__code__"]) 
         
         _globals = self.deserialize_globals(foo["__globals__"], foo)
         _globals["builtins"] = __import__("builtins")
@@ -314,23 +303,13 @@ class Serializer:
         return result
 
 
-    def deserialize_object(self, object_type, obj):
-        if object_type == "property":
-            obj = self.deserialize(obj)
-            return property(
-                fget=self.deserialize(obj["fget"]),
-                fset=self.deserialize(obj["fset"]),
-                fdel=self.deserialize(obj["fdel"]),
-            )
-        obj_dict = self.deserialize_dict(DICTIONARY, obj)
-        result = obj_dict[OBJECT_NAME]()
-
-        for key, value in obj_dict[FIELDS_NAME].items():
-            result.key = value
-
+    def deserialize_object(self, obj):
+        result = object.__new__(self.deserialize(obj["__class__"]))
+        result.__dict__ = {key: self.deserialize(value)
+                             for key, value in obj["__vars__"].items()}
         return result
 
-    def deserialize_class(self, object_type, class_dict):
+    def deserialize_class(self, class_dict):
         
         attributes = {member: self.deserialize(value)
                  for member, value in class_dict.items()}
@@ -347,20 +326,20 @@ class Serializer:
 
         return _class
     
-    def deserialize_method(self, object_type, _method):
-        return getattr(builtins, object_type)(self.deserialize(_method[VALUE]))
+    def deserialize_method(self, _method):
+        return getattr(builtins, _method[TYPE])(self.deserialize(_method[VALUE]))
 
 
-    def deserialize_property(self, object_type, _property):
-        return property(fget=self.deserialize(_property[VALUE]["fget"]),
-                            fset=self.deserialize(_property[VALUE]["fset"]),
-                            fdel=self.deserialize(_property[VALUE]["fdel"]))
+    def deserialize_property(self, _property):
+        return property(fget=self.deserialize(_property["fget"]),
+                            fset=self.deserialize(_property["fset"]),
+                            fdel=self.deserialize(_property["fdel"]))
 
 
-    def deserialize_iterator(self, object_type, _iter):
-        return iter(self.deserialize(item) for item in _iter[VALUE])
+    def deserialize_iterator(self, _iter):
+        return iter(self.deserialize(item) for item in _iter)
     
-    def _unpack_object(self, object_type, obj):
+    def _unpack_object(self, obj):
     
         result = object.__new__(self.deserialize(obj["__class__"]))
         result.__dict__ = {key: self.deserialize(value)
@@ -368,7 +347,7 @@ class Serializer:
 
         return result
     
-    def deserialize_code(self, object_type, code):
+    def deserialize_code(self, code):
         return CodeType(*(self.deserialize(code[ATTRIBUTE])
                           for ATTRIBUTE in CODE_ATTRIBUTES)) 
 

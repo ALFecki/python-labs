@@ -8,12 +8,12 @@ class JsonSerialization(Serialization):
             f.write(self.dumps(obj))
 
     def dumps(self, obj):
-        return to_json(self.serializer.serialize(obj)).replace("\n", "\\n")
+        return to_json(self.serializer.serialize(obj))
 
     def load(self, file):
         with open(file, "r") as f:
             return self.loads(f.read())
 
     def loads(self, str):
-        obj = from_json(str.replace("\\n", "\n"))
+        obj = from_json(str)
         return self.serializer.deserialize(obj)

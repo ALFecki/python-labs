@@ -1,4 +1,4 @@
-from src.serialization_tool.serialization_factory import SerializationFactory
+from serialization_tool.serialization_factory import SerializationFactory
 import pytest
 import math
 
@@ -158,6 +158,20 @@ def test_class():
     result = test_response("Hello")
     assert(result.get_title() == test.get_title())
 
+def test_object():
+    
+    json.dump(Test("Hello"), "test.json")
+    test = Test("Hello")
+    test_response = json.load("test.json")
+    
+    assert(test_response.get_title() == test.get_title())
+
+    xml.dump(Test("Hello"), "test.xml")
+    test = Test("Hello")
+    test_response = xml.load("test.xml")
+    
+    assert(test_response.get_title() == test.get_title())
+
 
 class Test1:
     @property
@@ -165,8 +179,8 @@ class Test1:
         return a;
 
 def test_property():
-    test1 = Test1()
-    json.dump(test1.func(2), 'test.json')
+    
+    json.dump(Test1.func, 'test.json')
     test = json.load('test.json')
-    assert(2 == test)
+    assert(2 == test())
 

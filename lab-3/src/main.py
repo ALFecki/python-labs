@@ -6,6 +6,7 @@ from serialization_tool.serialization_factory import SerializationFactory
 import unittest
 import inspect
 from pprint import pprint
+from serializer_Konchik import JsonSerializer
 
 def add(a, b):
     return a + b
@@ -65,26 +66,53 @@ def test_property():
     assert('name after age deletion' == h2._name)
 
 def main():
-    
-    test1 = Test1()
-    json.dump(Test1.func, "test.json")
-    test = json.load("test.json")
-    test_property()
 
-    # c = {2: "a", 3: "b"}
+    # test1 = Test1()
+    # json.dump(Test1.func, "test.json")
+    # test = json.load("test.json")
+    # test_property()
+
+    c = {2: "a", 3: "b"}
     # a = 4
-    # b = Test()
+    b = Test
+    xml = SerializationFactory.get_serializer("xml")
 
-    # xml = SerializationFactory.get_serializer("xml")
+    serializer = JsonSerializer()
+    serializer.dump(b, open('test1.json', 'w'))
+    a = 1
+    # b = 2.5
+    c = True
+    d = complex(2, 3)
+    e = "Hello, World!"
+    f = None
+
+    json.dump(a, "test.json")
+    assert (a == json.load("test.json"))
+    xml.dump(a, "test.xml")
+    assert (a == xml.load("test.xml"))
+    json.dump(b, "test.json")
+    print(b)
+    print(json.load('test.json'))
+    assert (b == json.load("test.json"))
+    xml.dump(b, "test.xml")
+    assert (b == xml.load("test.xml"))
     # json.dump(c, "test.json")
-    # # print(json.load("test.json"))
-    # res = json.load("test.json")
-    # print(res)
-    # xml.dump(b, "test.xml")
-    # test = xml.load("test.xml")
-    # print(test.get_title())
-    # xml.dump(add, "test.xml")
-    # print(xml.load("test.xml")(2, 3))
+    # assert (c == json.load("test.json"))
+    # xml.dump(c, "test.xml")
+    # assert (c == xml.load("test.xml"))
+    # json.dump(d, "test.json")
+    # assert (d == json.load("test.json"))
+    # xml.dump(d, "test.xml")
+    # assert (d == xml.load("test.xml"))
+    # json.dump(e, "test.json")
+    # assert (e == json.load("test.json"))
+    # xml.dump(e, "test.xml")
+    # assert (e == xml.load("test.xml"))
+    # print(xml.load("test.xml"))
+    # json.dump(f, "test.json")
+    # assert (f == json.load("test.json"))
+    # xml.dump(f, "test.xml")
+    # assert (f == xml.load("test.xml"))
 
 
 if __name__ == "__main__":

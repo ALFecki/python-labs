@@ -27,6 +27,10 @@ CODE = "__code__"
 MODULE = "module"
 
 TYPES = ["int", "float", "bool", "str", "complex", "NoneType"]
+PRIMITIVES = (int, float, bool, str, types.NoneType, complex)
+
+COLLECTIONS = (set, list, tuple, bytes, bytearray)
+
 
 ITERABLE_TYPES = ["list", "tuple", "set", "bytes"]
 
@@ -72,7 +76,7 @@ NOT_CLASS_ATTRIBUTES = [
     "__setattr__",
 ]
 
-CODE_ATTRIBUTES = [
+CODE_ATTRIBUTES = (
     "co_argcount",
     "co_posonlyargcount",
     "co_kwonlyargcount",
@@ -91,7 +95,7 @@ CODE_ATTRIBUTES = [
     "co_exceptiontable",
     "co_freevars",
     "co_cellvars",
-]
+)
 
 CODE_OBJECT_ARGS = [
     "co_argcount",
