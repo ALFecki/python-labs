@@ -158,3 +158,15 @@ def test_class():
     result = test_response("Hello")
     assert(result.get_title() == test.get_title())
 
+
+class Test1:
+    @property
+    def func(a):
+        return a;
+
+def test_property():
+    test1 = Test1()
+    json.dump(test1.func(2), 'test.json')
+    test = json.load('test.json')
+    assert(2 == test)
+

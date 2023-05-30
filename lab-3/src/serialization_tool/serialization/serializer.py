@@ -132,10 +132,18 @@ class Serializer:
     def serialize_object(self, some_object):
         class_obj = type(some_object)
         result = dict()
-        result[TYPE] = OBJECT
+        if (some_object.__class__.__name__ == "property"):
+            result[TYPE] = 'property'
+            result[VALUE] = self.serialize({'fget': self.serialize(some_object.fget), 'fset': self.serialize(some_object.fset), 'fdel': self.serialize(some_object.fdel)})
+            # result[VALUE][]
+            # result[VALUE][self.serialize(some_object.fdel)]
+            return result
+        result[VALUE][self.serialize(FIELDS_NAME)] = self.serialize(some_object.__dict__)
+        result[TYPE] = class_obj.__name__
         result[VALUE] = {}
         result[VALUE][self.serialize(OBJECT_NAME)] = self.serialize(class_obj)
-        result[VALUE][self.serialize(FIELDS_NAME)] = self.serialize(some_object.__dict__)
+        
+
         result[VALUE] = tuple((k, result[VALUE][k]) for k in result[VALUE])
 
         return result
@@ -193,7 +201,7 @@ class Serializer:
             return self.deserialize_class
         if object_type in TYPES:
             return self.deserialize_type
-        if object_type == OBJECT:
+        if object_type == OBJECT or object_type == 'property':
             return self.deserialize_object
         if object_type == MODULE_NAME:
             return self.deserialize_module
@@ -283,6 +291,9 @@ class Serializer:
         return ans
     
     def deserialize_object(self, object_type, obj):
+        if (object_type == "property"):
+            obj = self.deserialize(obj)
+            return property(fget= self.deserialize(obj['fget']),fset= self.deserialize(obj['fset']),  fdel= self.deserialize(obj['fdel']))
         obj_dict = self.deserialize_dict(DICTIONARY, obj)
         result = obj_dict[OBJECT_NAME]()
 
