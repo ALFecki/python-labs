@@ -30,6 +30,8 @@ TYPES = ["int", "float", "bool", "str", "complex", "NoneType"]
 
 ITERABLE_TYPES = ["list", "tuple", "set", "bytes"]
 
+METHOD_DECORATORS = (classmethod, staticmethod)
+
 FUNCTION_ATTRIBUTES = [
     "__name__",
     "__globals__",
