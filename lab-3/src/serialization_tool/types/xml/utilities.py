@@ -26,43 +26,6 @@ def to_xml(obj):
             "".join([f"{to_xml(key)}{to_xml(value)}" for key, value in obj.items()]),
         )
 
-    # if type(obj) == tuple:
-    #     serialized = []
-    #     for el in obj:
-    #         global intent
-    #         intent += 1
-    #         isType = False
-    #         if type(el) == tuple:
-    #             isType = True
-    #             serialized.append(
-    #                 f"\n"
-    #                 + ((intent - 1) * "\t")
-    #                 + f"<{type(el).__name__}>"
-    #                 + (isType * intent * "\t")
-    #                 + f"{to_xml(el)}"
-    #                 + (isType * '\n')
-    #                 + (isType * (intent - 1) * "\t")
-    #                 + f"</{type(el).__name__}> "
-    #             )
-    #         else:
-    #             serialized.append(
-    #                 f"\n"
-    #                 + ((intent - 1) * "\t")
-    #                 + f"<str>"
-    #                 + (isType * intent * "\t")
-    #                 + f"{to_xml(el)}"
-    #                 + (isType * '\n')
-    #                 + (isType * (intent - 1) * "\t")
-    #                 + f"</str> "
-    #             )
-    #         intent -= 1
-    #     res = "".join(serialized)
-    #     return f"{res}"
-    # else:
-    #     return f"{str(obj)}"
-
-
-
 def from_xml(string: str):
     string = string.strip()
 

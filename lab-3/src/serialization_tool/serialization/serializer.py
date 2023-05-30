@@ -44,12 +44,6 @@ class Serializer:
 
         return self.serialize_object(obj)
 
-    # def serialize(self, obj):
-    #     serializer = self.create_serializer(obj)
-    #     serialized = serializer(obj)
-    #     serialized = tuple((k, serialized[k]) for k in serialized)
-
-    #     return serialized
 
     def serialize_type(self, obj):
         result = dict()
