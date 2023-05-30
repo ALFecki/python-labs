@@ -174,8 +174,9 @@ class Serializer:
         return result
 
     def serialize_code(self, obj):
+        print(obj)
         return {
-            TYPE: obj.__name__,
+            TYPE: type(obj).__name__,
             VALUE: {
                 key: self.serialize(value)
                 for key, value in inspect.getmembers(obj)
