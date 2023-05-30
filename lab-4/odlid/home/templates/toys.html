@@ -9,7 +9,11 @@
 
 
 {% block content %}
-<br><br>
+
+{% if user.is_staff %}
+<a type="button" href="{% url 'home:create' %}" class="btn btn-primary">Create product</a>
+{% endif %}
+
 <section class="container">
     <ol class="category-list">
         <li class="item">
@@ -56,7 +60,7 @@
             {% for toy in toys %}
             <tr>
                 <div class="item">
-                    <td><a href="{{ toy.get_url }}">
+                    <td><a href="{{ toy.get_detail_url }}">
                             <div class="toy-name">{{ toy.name }}</div>
                         </a></td>
                     <td>{{ toy.code }}</td>

@@ -43,6 +43,9 @@ class Product(models.Model):
     
     category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE, null=True)
 
+    def get_detail_url(self):
+        return reverse('home:detail', args=[str(self.id)])
+    
     def get_edit_url(self):
         return reverse('home:edit', args=[str(self.id)])
     

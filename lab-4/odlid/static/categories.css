@@ -14,8 +14,13 @@
 }
 
 img {
-    max-width: 200px;
-    max-height: 350px;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin: 5%;
+    border: 2px solid transparent;
+    padding: 5px;
+    border-color: black;
 }
 
 .item {

@@ -1,26 +1,42 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block css%}
+<link rel="stylesheet" href="{% static 'details.css' %}">
+{% endblock %}
+
 {% block content %}
+
 <div class="product-detail">
     <img src="{% if product.image %}{{ product.image.url }}{% else %}
     {% static 'images/no_image.svg' %}{% endif %}">
-    <h1>{{ product.name }}</h1>
+    <h1>Product name: {{ product.name }}</h1>
     <h2>
-        <a href="{{ product.category.get_url }}">{{product.category }}</a>
+        Category: <a href="{{ product.category.get_url }}">{{ product.category.name }}</a>
     </h2>
-    <p class="cost">{{ product.cost }}</p>
+    <h3 class="cost">Cost: {{ product.cost }}$</h3>
+    <p>In production: {% if product.in_prod %}Yes{% else %}No{%endif%}</p>
 
-    
+
+
     <!-- {{ book.summary|linebreaks }} -->
-    {%if user.is_staff%}
-    <td><a href="{{ product.get_edit_url }}">Edit</a> | <a href="delete/{{peoduct.id}}/">Remove</a></td>
-    {%endif%}
+    <div class="additional-buttons">
+        <input class="GoBackButton" type="button" value="Go back to catalog" onclick="history.back()">
+        {%if user.is_staff%}
+        <form action="{{ product.get_edit_url }}">
+            <input onclick="location.href = '{{ product.get_edit_url }}'" type="button" href="" value="Edit"></input>
+        </form>
+
+        <form action="delete/{{product.id}}/">
+            <input type="button" href="" value="Remove"></input>
+        </form>
+        {%endif%}
+    </div>
     <!-- <div class="bottom-right">
         <p>{{ joke }}</p>
     </div> -->
-    
 
-    
+
+
 </div>
 {% endblock %}

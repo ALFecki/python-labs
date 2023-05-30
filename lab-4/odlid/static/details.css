@@ -1,0 +1,24 @@
+img {
+    max-width: 500px;
+    max-height: 400px;
+}
+
+.product-detail {
+    text-align: center;
+}
+
+input {
+    padding: 15px 32px;
+    border-radius: 8px;
+    background-color: green;
+    color: white;
+    text-align: center;
+    /* display: inline-block; */
+    font-size: medium;
+}
+
+.additional-buttons {
+    display: inline-flex;
+    /* float: left; */
+    text-align: center;
+}

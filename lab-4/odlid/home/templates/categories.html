@@ -8,6 +8,15 @@
 {% block content %}
 <br><br>
 <div class="categories-list">
+
+    <div class="item">
+        <a href="{% url 'home:toys_list' %}">
+            <img
+                src="{% static 'images/all.png' %}">
+
+            <div class="category-name">All</div>
+        </a>
+    </div>
     {% for category in categories %}
 
     <div class="item">
