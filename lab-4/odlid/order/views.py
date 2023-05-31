@@ -21,7 +21,7 @@ def order_create(request):
             item['product'].purchase_count += item['quantity']
             item['product'].save()
         cart.clear()
-        return render(request, 'order/created.html',
+        return render(request, 'order/done.html',
                         {'order': order})
     
     return render(request, 'order/create.html',

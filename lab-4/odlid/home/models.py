@@ -45,11 +45,14 @@ class Product(models.Model):
     image = models.ImageField(upload_to='static/images', blank=True, null=True)
 
     model = models.ForeignKey(ProductModel, on_delete=models.CASCADE, null=True)
-    cost = models.DecimalField(decimal_places=2, help_text='Enter product cost')
+    cost = models.DecimalField(max_digits=10, decimal_places=2, help_text='Enter product cost')
 
     in_prod = models.BooleanField(help_text='Enter is product in production')
     
     category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE, null=True)
+
+    # quantity = models.IntegerField()
+    purchase_count = models.PositiveIntegerField(default=0)
 
     def get_detail_url(self):
         return reverse('home:detail', args=[str(self.id)])
