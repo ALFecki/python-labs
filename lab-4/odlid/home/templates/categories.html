@@ -6,13 +6,19 @@
 {%endblock%}
 
 {% block content %}
-<br><br>
+
+{% if user.is_staff %}
+<div class="create-button">
+    <a type="button" href="{% url 'home:create_category' %}" class="btn btn-primary">Create category</a>
+</div>
+{% endif %}
+
+
 <div class="categories-list">
 
     <div class="item">
         <a href="{% url 'home:toys_list' %}">
-            <img
-                src="{% static 'images/all.png' %}">
+            <img src="{% static 'images/all.png' %}">
 
             <div class="category-name">All</div>
         </a>

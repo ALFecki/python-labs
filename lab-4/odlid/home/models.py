@@ -8,10 +8,13 @@ class ProductCategory(models.Model):
     name = models.CharField(max_length=200, 
                             help_text='Enter category name')
     
-    image = models.ImageField(upload_to='resources/images', blank=True, null=True)
+    image = models.ImageField(upload_to='static/images', blank=True, null=True)
 
     def get_url(self):
         return reverse('home:toys_list_by_category', args=[str(self.id)])
+    
+    def __str__(self) -> str:
+        return self.name.__str__()
     
 
 class ProductModel(models.Model):
@@ -29,6 +32,9 @@ class ProductModel(models.Model):
 
     year_of_manufacture = models.IntegerField(validators=[MinValueValidator(1984), max_value_current_year])
 
+    def __str__(self) -> str:
+        return self.name.__str__()
+
 
 class Product(models.Model):
     name = models.CharField(max_length=200,
@@ -36,8 +42,10 @@ class Product(models.Model):
     
     code = models.IntegerField(help_text='Enter product code')
 
+    image = models.ImageField(upload_to='static/images', blank=True, null=True)
+
     model = models.ForeignKey(ProductModel, on_delete=models.CASCADE, null=True)
-    cost = models.IntegerField(help_text='Enter product cost')
+    cost = models.FloatField(help_text='Enter product cost')
 
     in_prod = models.BooleanField(help_text='Enter is product in production')
     

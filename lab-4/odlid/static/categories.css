@@ -34,3 +34,8 @@ img {
     width: 370px;
     height: fit-content;
 }
+
+.create-button {
+    margin: 0 auto;
+    text-align: center;
+}

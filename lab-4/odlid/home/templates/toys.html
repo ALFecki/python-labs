@@ -14,25 +14,24 @@
 <a type="button" href="{% url 'home:create' %}" class="btn btn-primary">Create product</a>
 {% endif %}
 
-<section class="container">
-    <ol class="category-list">
-        <li class="item">
-            <a href="{% url 'home:toys_list' %}">
-                <div class="category-name">All</div>
-            </a>
-        </li>
-        {% for c in categories %}
+<section class="container text-center">
+    <div class="row align-items-center">
+        <div class="col">
+            <div class="list-group" style="background-color: dimgrey;">
+                <a class="list-group-item list-group-item-action" href="{% url 'home:toys_list' %}">
+                    <div class="category-name">All</div>
+                </a>
+                {% for c in categories %}
 
-        <li class="item">
-            <a href="{{ c.get_url }}">
-                <div class="category-name">{{ c.name }}</div>
-            </a>
-        </li>
-        {% endfor %}
-    </ol>
+                <a class="list-group-item list-group-item-action" href="{{ c.get_url }}">
+                    <div class="category-name">{{ c.name }}</div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
 
-    <div class="toys-list">
-        <!-- <h1>{% if genre %}{{ genre.name }}{% else %}Book{% endif %}
+        <div class="col">
+            <!-- <h1>{% if genre %}{{ genre.name }}{% else %}Book{% endif %}
         {% if user.is_staff %}
         <a href="/create/">Create Product</a>
         {% endif %}
@@ -41,35 +40,38 @@
         {%endif%}
 
     </h1> -->
-    
-    <label>{% if category %}{{ category }}{% else %}All{% endif %}</label>
-    
 
-        <form action="{{ request.get_full_path }}" method="get">
-            <button type="submit" name="sort" value="ascending">Сортировать по возрастанию</button>
-            <button type="submit" name="sort" value="descending">Сортировать по убыванию</button>
-        </form>
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Code</th>
-                <th>Cost</th>
-                <th>In Production</th>
-            </tr>
+            <h1>{% if category %}{{ category.name }}{% else %}All{% endif %}</h1>
 
-            {% for toy in toys %}
-            <tr>
-                <div class="item">
-                    <td><a href="{{ toy.get_detail_url }}">
-                            <div class="toy-name">{{ toy.name }}</div>
-                        </a></td>
-                    <td>{{ toy.code }}</td>
-                    <td>{{ toy.cost }}</td>
-                    <td>{{ to.in_prod }}</td>
-                </div>
-            </tr>
-            {% endfor %}
-        </table>
+
+            <form class="button-form" action="{{ request.get_full_path }}" method="get">
+                <button type="submit" name="sort" value="ascending">Сортировать по возрастанию</button>
+                <button type="submit" name="sort" value="descending">Сортировать по убыванию</button>
+            </form>
+            <table class="table table-success table-striped">
+                <tr>
+                    <th>Name</th>
+                    <th>Code</th>
+                    <th>Cost</th>
+                    <th>In Production</th>
+                    <th>Buy</th>
+                </tr>
+
+                {% for toy in toys %}
+                <tr>
+                    <div class="item">
+                        <td><a href="{{ toy.get_detail_url }}">
+                                <div class="toy-name">{{ toy.name }}</div>
+                            </a></td>
+                        <td>{{ toy.code }}</td>
+                        <td>{{ toy.cost }}</td>
+                        <td><img style="height: 15px;width: 15px;" src="{% if toy.in_prod%}{% static 'images/accept.png'%}{% else %}{% static 'images/not_accept.png'%}{%endif%}"></td>
+                        <td><a href="#" type="button">Add to cart</a></td>
+                    </div>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
     </div>
 </section>
 

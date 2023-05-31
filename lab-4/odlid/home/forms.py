@@ -1,12 +1,14 @@
 from django import forms
-from .models import Product, ProductModel
+from .models import Product, ProductModel, ProductCategory
 
 
 class ProductForm(forms.ModelForm):
-    # model = (m.name for m in ProductModel.objects.all())
-    all_model = ProductModel.objects.values()
-    choices = [(m['name'] for m in all_model)]
-    model = forms.ChoiceField(choices=choices, required=False )
     class Meta:
         model = Product
-        fields = ['name', 'code', 'model', 'cost', 'in_prod', 'category']
+        fields = ['name', 'code', 'model', 'image', 'cost', 'in_prod', 'category']
+
+
+class ProductCategoryForm(forms.ModelForm):
+    class Meta:
+        model = ProductCategory
+        fields = ['name', 'image']
