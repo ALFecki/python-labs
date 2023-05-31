@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="serialization_tool",
-    version="1.51",
+    version="1.52",
     license="GNU GENERAL PUBLIC LICENSE",
     author="Alexander Skvortsov",
     author_email="alexskvr03@gmail.com",
@@ -13,6 +13,5 @@ setup(
     keywords="serialization xml json",
     install_requires = [
         'regex',
-        're'
     ]
 )
