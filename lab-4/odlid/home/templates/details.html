@@ -27,8 +27,8 @@
             <input onclick="location.href = '{{ product.get_edit_url }}'" type="button" href="" value="Edit"></input>
         </form>
 
-        <form action="delete/{{product.id}}/">
-            <input type="button" href="" value="Remove"></input>
+        <form action="{{ product.get_delete_url }}">
+            <input type="button" onclick="location.href='{{ product.get_delete_url }}'" value="Remove"></input>
         </form>
         {%endif%}
     </div>

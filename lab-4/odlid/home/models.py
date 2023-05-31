@@ -49,6 +49,9 @@ class Product(models.Model):
     def get_edit_url(self):
         return reverse('home:edit', args=[str(self.id)])
     
+    def get_delete_url(self):
+        return reverse('home:delete', args=[str(self.id)])
+    
     
 
 

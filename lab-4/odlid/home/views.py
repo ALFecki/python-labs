@@ -33,11 +33,8 @@ def toys_list(request, category=None):
 
 
 def product_details(request, id):
-
     product = get_object_or_404(Product, id=id)
-    return render(request, 'details.html', {'product':product})
-
-
+    return render(request, "details.html", {"product": product})
 
 
 def create_product(request):
@@ -65,12 +62,11 @@ def edit_product(request, id):
     if not request.user.is_staff:
         raise PermissionDenied("Your role is to weak")
 
-    
     try:
         product = Product.objects.get(id=id)
-        
-        form = ProductForm(initial= 
-            {
+
+        form = ProductForm(
+            initial={
                 "name": product.name,
                 "code": product.code,
                 "model": product.model,
@@ -81,17 +77,31 @@ def edit_product(request, id):
         )
 
         if request.method == "POST":
-            product.name = request.POST.get('name')
-            product.code = request.POST.get('code')
-            product.model = ProductModel.objects.get(id=request.POST.get('model'))
-            product.cost = request.POST.get('cost')
-            product.in_prod = request.POST.get('in_prod') == 'on'
-            product.category = ProductCategory.objects.get(id=request.POST.get('category'))
+            product.name = request.POST.get("name")
+            product.code = request.POST.get("code")
+            product.model = ProductModel.objects.get(id=request.POST.get("model"))
+            product.cost = request.POST.get("cost")
+            product.in_prod = request.POST.get("in_prod") == "on"
+            product.category = ProductCategory.objects.get(
+                id=request.POST.get("category")
+            )
 
             product.save()
 
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect("/")
         else:
-            return render(request, 'edit.html', {'product':product, 'form':form})
+            return render(request, "edit.html", {"product": product, "form": form})
     except:
-        return HttpResponseNotFound('<h2>Product is not found</h2>')
+        return HttpResponseNotFound("<h2>Product is not found</h2>")
+
+
+def delete_product(request, id):
+    if not request.user.is_staff:
+        raise PermissionDenied("Your role is to weak")
+
+    try:
+        product = Product.objects.get(id=id)
+        product.delete()
+        return HttpResponseRedirect("/toys_list")
+    except:
+        return HttpResponseNotFound("<h1>Product not found</h1>")
