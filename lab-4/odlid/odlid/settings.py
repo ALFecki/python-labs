@@ -26,6 +26,8 @@ SECRET_KEY = 'django-insecure-(@!n50$6)oq&t(0f2vs6i)!rf06e!)eobj%y*u4*+dte6ic6+@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+CART_SESSION_ID = 'cart'
+
 ALLOWED_HOSTS = []
 
 
@@ -40,7 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "phonenumber_field",
     'login',
-    'home'
+    'home',
+    'cart',
+    'order'
 ]
 
 MIDDLEWARE = [

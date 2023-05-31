@@ -16,9 +16,10 @@ def category_list(request, category=None):
 def toys_list(request, category=None):
     
     categories = ProductCategory.objects.all()
-    if category and type(category) == int:
+    print(category)
+    if category:
+        category = ProductCategory.objects.get(id=category)
         toys = Product.objects.filter(category=category)
-        category = ProductCategory.objects.get(id=category).name
     else:
         toys = Product.objects.all()
 

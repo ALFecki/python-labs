@@ -20,6 +20,7 @@ from login import views
 
 urlpatterns = [
     path("auth/", include('login.urls', namespace="login")),
-    path('', include('home.urls', namespace='home')),
+    path('home/', include('home.urls', namespace='home')),
+    path('cart/', include('cart.urls', namespace='cart')),
     path("admin/", admin.site.urls),
 ]
