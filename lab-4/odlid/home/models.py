@@ -45,7 +45,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='static/images', blank=True, null=True)
 
     model = models.ForeignKey(ProductModel, on_delete=models.CASCADE, null=True)
-    cost = models.FloatField(help_text='Enter product cost')
+    cost = models.DecimalField(decimal_places=2, help_text='Enter product cost')
 
     in_prod = models.BooleanField(help_text='Enter is product in production')
     

@@ -13,7 +13,7 @@
     grid-column-gap: 0px;
 }
 
-img {
+.category_image {
     width: 200px;
     height: 200px;
     object-fit: cover;

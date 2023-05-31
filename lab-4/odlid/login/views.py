@@ -23,7 +23,7 @@ class LoginView(FormView):
             context={"form": self.form_class(), "joke_setup": self.joke["setup"], "joke_punchline": self.joke["punchline"]},
         )
 
-    success_url = "/"
+    success_url = "/home"
 
     def form_valid(self, form):
         self.user = form.get_user()
@@ -60,4 +60,4 @@ class LogoutView(FormView):
     def get(self, request):
         logout(request)
 
-        return HttpResponseRedirect('/')
+        return HttpResponseRedirect('/home')

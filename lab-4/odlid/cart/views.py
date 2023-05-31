@@ -6,7 +6,7 @@ from .forms import CartAddProductForm
 from home.models import Product
 
 
-# @require_POST
+@require_POST
 def cart_add(request, product_id):
     if not request.user.is_authenticated:
         raise PermissionDenied("You must to sign in")

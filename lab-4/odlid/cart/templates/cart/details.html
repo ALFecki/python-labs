@@ -28,7 +28,7 @@
                     {% with product=item.product %}
                     <tr>
                         <td>
-                            <img src="
+                            <img style="max-width: 250px; max-height: 200px;object-fit: cover;" src="
                             {% if product.image %}
                                 {{ product.image.url }}
                             {% else %}

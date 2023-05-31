@@ -33,7 +33,7 @@
 
     <div class="item">
         <a href="{{ category.get_url }}">
-            <img
+            <img class="category_image"
                 src="{% if category.image %} {{ category.image.url }} {% else %} {% static 'images/no_image.svg' %}{% endif %}">
 
             <div class="category-name">{{ category.name }}</div>

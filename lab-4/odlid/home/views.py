@@ -5,6 +5,7 @@ from django.core.exceptions import PermissionDenied
 from .forms import ProductForm, ProductCategoryForm, ProductModelForm
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
 from django.views.generic.edit import FormView
+from cart.forms import CartAddProductForm
 
 
 def category_list(request, category=None):
@@ -14,7 +15,6 @@ def category_list(request, category=None):
 
 
 def toys_list(request, category=None):
-    
     categories = ProductCategory.objects.all()
     print(category)
     if category:
@@ -37,13 +37,17 @@ def toys_list(request, category=None):
             "categories": categories,
             "request": request,
             "category": category,
+
         },
     )
 
 
 def product_details(request, id):
     product = get_object_or_404(Product, id=id)
-    return render(request, "details.html", {"product": product})
+    cart_product_form = CartAddProductForm()
+
+
+    return render(request, "details.html", {"product": product,"cart_product_form": cart_product_form})
 
 
 def create_product(request):
@@ -65,7 +69,7 @@ def create_product(request):
         product.save()
     else:
         return render(request, "create.html", {"form": form, 'is_product': True})
-    return HttpResponseRedirect("/")
+    return HttpResponseRedirect("/home")
 
 
 def edit_product(request, id):
@@ -131,7 +135,7 @@ def create_category(request):
         product_category.save()
     else:
         return render(request, "create.html", {"form": form})
-    return HttpResponseRedirect("/")
+    return HttpResponseRedirect("/home")
 
 
 def create_model(request):
@@ -148,4 +152,4 @@ def create_model(request):
         product_model.save()
     else:
         return render(request, 'create.html', {"form":form})
-    return HttpResponseRedirect('/')
+    return HttpResponseRedirect('/home')

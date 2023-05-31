@@ -51,7 +51,6 @@
                     <th>Code</th>
                     <th>Cost</th>
                     <th>In Production</th>
-                    <th>Buy</th>
                 </tr>
 
                 {% for toy in toys %}
@@ -65,11 +64,11 @@
                         <td><img style="height: 15px;width: 15px;"
                                 src="{% if toy.in_prod %}{% static 'images/accept.png'%}{% else %}{% static 'images/not_accept.png'%}{%endif%}">
                         </td>
-                        <td><a href="{% url 'cart:cart_add' toy.id %}" type="button">Add to cart</a></td>
                     </div>
                 </tr>
                 {% endfor %}
             </table>
+    </form>
         </div>
     </div>
 </section>

@@ -16,10 +16,17 @@
     </h2>
     <h3 class="cost">Cost: {{ product.cost }}$</h3>
     <p>In production: {% if product.in_prod %}Yes{% else %}No{%endif%}</p>
+    
+    {% if user.is_authenticated %}
+    
+    <form action="{% url 'cart:cart_add' product.id %}" method="post">
+        {{ cart_product_form }}
+        {% csrf_token %}
+        <input type="submit" value="Add to cart">
+    </form>
+    
+    {% endif %}
 
-
-
-    <!-- {{ book.summary|linebreaks }} -->
     <div class="additional-buttons">
         <input class="GoBackButton" type="button" value="Go back to catalog" onclick="history.back()">
         {%if user.is_staff%}
@@ -32,11 +39,6 @@
         </form>
         {%endif%}
     </div>
-    <!-- <div class="bottom-right">
-        <p>{{ joke }}</p>
-    </div> -->
-
-
 
 </div>
 {% endblock %}
