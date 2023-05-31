@@ -6,12 +6,18 @@
 <link rel="stylesheet" href="{% static 'toys.css' %}">
 {% endblock %}
 
-
+{% block title%}
+<title>
+    Catalog
+</title>
+{% endblock %}
 
 {% block content %}
 
 {% if user.is_staff %}
-<a type="button" href="{% url 'home:create' %}" class="btn btn-primary">Create product</a>
+<div class="create-button">
+    <a type="button" href="{% url 'home:create' %}" class="btn btn-primary">Create product</a>
+</div>
 {% endif %}
 
 <section class="container text-center">
@@ -45,8 +51,8 @@
 
 
             <form class="button-form" action="{{ request.get_full_path }}" method="get">
-                <button type="submit" name="sort" value="ascending">Сортировать по возрастанию</button>
-                <button type="submit" name="sort" value="descending">Сортировать по убыванию</button>
+                <button type="submit" name="sort" value="ascending">Sort by price ascending</button>
+                <button type="submit" name="sort" value="descending">Sort by price descending</button>
             </form>
             <table class="table table-success table-striped">
                 <tr>
@@ -65,7 +71,9 @@
                             </a></td>
                         <td>{{ toy.code }}</td>
                         <td>{{ toy.cost }}</td>
-                        <td><img style="height: 15px;width: 15px;" src="{% if toy.in_prod%}{% static 'images/accept.png'%}{% else %}{% static 'images/not_accept.png'%}{%endif%}"></td>
+                        <td><img style="height: 15px;width: 15px;"
+                                src="{% if toy.in_prod%}{% static 'images/accept.png'%}{% else %}{% static 'images/not_accept.png'%}{%endif%}">
+                        </td>
                         <td><a href="#" type="button">Add to cart</a></td>
                     </div>
                 </tr>

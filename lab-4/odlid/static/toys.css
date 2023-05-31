@@ -26,13 +26,20 @@
     padding: 20px;
     width: 950px;
     background-color: #f1f1f1;
-    
+
     /* width: fit-content; */
 }
 
 .button-form {
     display: inline-flex;
 
+}
+
+
+.create-button {
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 5px;
 }
 
 

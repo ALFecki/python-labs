@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404
+from django import views
 from .models import ProductCategory, Product, ProductModel
 from django.core.exceptions import PermissionDenied
-from .forms import ProductForm, ProductCategoryForm
-from django.http import HttpResponseRedirect, HttpResponseNotFound
+from .forms import ProductForm, ProductCategoryForm, ProductModelForm
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
+from django.views.generic.edit import FormView
 
 
 def category_list(request, category=None):
@@ -12,6 +14,7 @@ def category_list(request, category=None):
 
 
 def toys_list(request, category=None):
+    
     categories = ProductCategory.objects.all()
     if category and type(category) == int:
         toys = Product.objects.filter(category=category)
@@ -19,7 +22,12 @@ def toys_list(request, category=None):
     else:
         toys = Product.objects.all()
 
-    print(category)
+    sort = request.GET.get('sort')
+
+    if (str(sort) == 'ascending'):
+            toys = toys.order_by('cost')
+    elif (str(sort) == 'descending'):
+        toys = toys.order_by('-cost')
     return render(
         request,
         "toys.html",
@@ -55,7 +63,7 @@ def create_product(request):
         )
         product.save()
     else:
-        return render(request, "create.html", {"form": form})
+        return render(request, "create.html", {"form": form, 'is_product': True})
     return HttpResponseRedirect("/")
 
 
@@ -92,7 +100,7 @@ def edit_product(request, id):
 
             return HttpResponseRedirect("/")
         else:
-            return render(request, "edit.html", {"product": product, "form": form})
+            return render(request, "edit.html", {"product": product, "form": form, 'is_product': True})
     except:
         return HttpResponseNotFound("<h2>Product is not found</h2>")
 
@@ -128,3 +136,15 @@ def create_category(request):
 def create_model(request):
     if not request.user.is_staff:
         raise PermissionDenied("Your role is to weak")
+
+
+    form = ProductModelForm()
+
+    if request.method == "POST":
+        product_model = ProductModel.objects.create(
+            name=request.POST.get('name'), year_of_manufacture=request.POST.get('year_of_manufacture')
+        )
+        product_model.save()
+    else:
+        return render(request, 'create.html', {"form":form})
+    return HttpResponseRedirect('/')
