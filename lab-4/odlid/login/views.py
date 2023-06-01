@@ -42,11 +42,11 @@ class RegistrationView(FormView):
     def form_valid(self, form) -> HttpResponse:
         form.save()
 
-        Client.objects.create(email=form.cleaned_data['email'], 
-                              unique_code=form.cleaned_data['unique_code'], 
-                              phone=form.cleaned_data['phone'], 
-                              city=form.cleaned_data['city'], 
-                              address=form.cleaned_data['address'] ).save()
+        # Client.objects.create(email=form.cleaned_data['email'], 
+        #                       unique_code=form.cleaned_data['unique_code'], 
+        #                       phone=form.cleaned_data['phone'], 
+        #                       city=form.cleaned_data['city'], 
+        #                       address=form.cleaned_data['address'] ).save()
         
         return super(RegistrationView, self).form_valid(form)
     

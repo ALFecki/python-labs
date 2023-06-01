@@ -39,19 +39,6 @@ class RegistrationForm(UserCreationForm):
             "password1",
             "password2",
         }
-        labels = {"user_name": "*Username", "password": "*Password"}
-        widgets = {
-            "user_name": forms.TextInput(
-                attrs={"placeholder": "ex:test", "autocomplete": "off"}
-            ),
-            "password": forms.PasswordInput(
-                attrs={
-                    "placeholder": "********",
-                    "autocomplete": "off",
-                    "data-toggle": "password",
-                }
-            ),
-        }
 
     def save(self, commit: bool = ...):
         user = super(RegistrationForm, self).save(commit=False)
