@@ -51,7 +51,6 @@ class Product(models.Model):
     
     category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE, null=True)
 
-    # quantity = models.IntegerField()
     purchase_count = models.PositiveIntegerField(default=0)
 
     def get_detail_url(self):

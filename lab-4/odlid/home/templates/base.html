@@ -62,7 +62,7 @@
                         Account
                     </a>
                     <ul style="margin-right: 30px;" class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="{% url 'account:history' %}">History</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -92,6 +92,7 @@
             let d = new Date();
             time.innerHTML = "Current date: " + d.toLocaleDateString() + " " + d.toLocaleTimeString();
         }, 1000)
+
     </script>
 
     {% block content %}

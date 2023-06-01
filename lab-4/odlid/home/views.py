@@ -78,7 +78,7 @@ def edit_product(request, id):
 
     try:
         product = Product.objects.get(id=id)
-
+        
         form = ProductForm(
             initial={
                 "name": product.name,
@@ -90,12 +90,13 @@ def edit_product(request, id):
                 "category": product.category,
             }
         )
+        print(request.FILES.get("image"))
         if request.method == "POST":
             product.name = request.POST.get("name")
             product.code = request.POST.get("code")
             product.model = ProductModel.objects.get(id=request.POST.get("model"))
             product.cost = request.POST.get("cost")
-            product.image = (request.FILES.get("image"),)
+            product.image = request.FILES.get("image")
             product.in_prod = request.POST.get("in_prod") == "on"
             product.category = ProductCategory.objects.get(
                 id=request.POST.get("category")
@@ -103,7 +104,7 @@ def edit_product(request, id):
 
             product.save()
 
-            return HttpResponseRedirect("/")
+            return HttpResponseRedirect("/home/toys-list")
         else:
             return render(request, "edit.html", {"product": product, "form": form, 'is_product': True})
     except:
@@ -117,7 +118,7 @@ def delete_product(request, id):
     try:
         product = Product.objects.get(id=id)
         product.delete()
-        return HttpResponseRedirect("/toys-list")
+        return HttpResponseRedirect("/home/toys-list")
     except:
         return HttpResponseNotFound("<h1>Product not found</h1>")
 
