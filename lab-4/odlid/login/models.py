@@ -5,9 +5,9 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Client(AbstractUser):
-    email = models.EmailField('email address', unique=True)
-    unique_code = models.IntegerField('unique_code', unique=True)
-    phone = PhoneNumberField(null=False, region='BY', unique=True)
+    email = models.EmailField('email address', unique=False)
+    unique_code = models.IntegerField('unique_code', unique=False)
+    phone = PhoneNumberField(null=False, region='BY', unique=False)
     city = models.CharField('city', unique=False, max_length=50)
     address = models.CharField('address', unique=False, max_length=50)
 
@@ -17,3 +17,15 @@ class Client(AbstractUser):
     REQUIRED_FIELDS = ['email', 'unique_code', 'phone', 'city', 'address']
 
 
+
+# class Employee(AbstractUser):
+#     email = models.EmailField('email address', unique=False)
+#     unique_code = models.IntegerField('unique_code', unique=False)
+#     phone = PhoneNumberField(null=False, region='BY', unique=False)
+#     city = models.CharField('city', unique=False, max_length=50)
+#     address = models.CharField('address', unique=False, max_length=50)
+
+#     objects = CustomUserManager()
+
+#     USERNAME_FIELD = 'username'
+#     REQUIRED_FIELDS = ['email', 'unique_code', 'phone', 'city', 'address']

@@ -1,12 +1,10 @@
 from django.contrib import admin
 from . import models
 
-# @admin.register(models.ProductModel)
 class ProductModelInline(admin.TabularInline):
     model = models.ProductModel
     raw_id_fields = ['model']
 
-# @admin.register(models.ProductCategory)
 class ProductCategoryInline(admin.TabularInline):
     model = models.ProductCategory
     raw_id_fields = ['category']

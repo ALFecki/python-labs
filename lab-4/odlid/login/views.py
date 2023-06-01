@@ -36,7 +36,7 @@ class LoginView(FormView):
 class RegistrationView(FormView):
     form_class = RegistrationForm
 
-    success_url = '/login'
+    success_url = '/auth/login'
     template_name = 'registration.html'
 
     def form_valid(self, form) -> HttpResponse:

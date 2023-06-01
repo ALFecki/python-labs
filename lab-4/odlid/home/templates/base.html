@@ -63,6 +63,9 @@
                     </a>
                     <ul style="margin-right: 30px;" class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
                         <li><a class="dropdown-item" href="{% url 'account:history' %}">History</a></li>
+                        {% if user.is_staff%}
+                        <li><a class="dropdown-item" href="{% url 'account:analyze' %}">Analyze</a></li>
+                        {% endif %}
                         <li>
                             <hr class="dropdown-divider">
                         </li>
