@@ -27,5 +27,6 @@ urlpatterns = [
     path('cart/', include('cart.urls', namespace='cart')),
     path('order/', include('order.urls', namespace='order')),
     path("admin/", admin.site.urls),
-    path('account/', include('analyzer.urls', namespace='account'))
+    path('account/', include('analyzer.urls', namespace='account')),
+    path('verification/', include('verify_email.urls'))
 ]

@@ -17,11 +17,11 @@
     <h1>Total income form toys: {{ total_income }}</h1>
     <h1>Total count are soled: {{ total_count }}</h1>
     <h1>Most valuable toy:
-        <a href="{ % url most_valuable_product.get_detail_url %}">
+        <a href="{{ most_valuable_product.get_detail_url }}">
             {{ most_valuable_product.name }}</a>
     </h1>
     <h1>Least valuable toy:
-        <a href="{ % url most_valuable_product.get_detail_url %}">
+        <a href="{{ most_valuable_product.get_detail_url }}">
             {{ min_valuable_product.name }}</a>
     </h1>
 </div>

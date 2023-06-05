@@ -6,6 +6,7 @@ from django.views.generic.edit import FormView
 from django.contrib.auth.forms import AuthenticationForm
 from .models import Client
 import requests
+from verify_email.email_handler import send_verification_email
 
 
 class LoginView(FormView):
@@ -41,7 +42,7 @@ class RegistrationView(FormView):
 
     def form_valid(self, form) -> HttpResponse:
         form.save()
-
+        # send_verification_email(self.request, form)
         # Client.objects.create(email=form.cleaned_data['email'], 
         #                       unique_code=form.cleaned_data['unique_code'], 
         #                       phone=form.cleaned_data['phone'], 

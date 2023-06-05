@@ -2,6 +2,7 @@ from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 import datetime
 from django.urls import reverse
+from decimal import Decimal
 
 
 class ProductCategory(models.Model):
@@ -40,12 +41,12 @@ class Product(models.Model):
     name = models.CharField(max_length=200,
                             help_text='Enter product name')
     
-    code = models.IntegerField(help_text='Enter product code')
+    code = models.PositiveIntegerField(help_text='Enter product code')
 
     image = models.ImageField(upload_to='static/images', blank=True, null=True)
 
     model = models.ForeignKey(ProductModel, on_delete=models.CASCADE, null=True)
-    cost = models.DecimalField(max_digits=10, decimal_places=2, help_text='Enter product cost')
+    cost = models.DecimalField(max_digits=10, decimal_places=2, help_text='Enter product cost', validators=[MinValueValidator(Decimal('0.01'))])
 
     in_prod = models.BooleanField(help_text='Enter is product in production')
     
