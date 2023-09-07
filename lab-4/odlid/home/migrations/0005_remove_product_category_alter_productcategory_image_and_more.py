@@ -4,24 +4,23 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('home', '0004_product_image'),
+        ("home", "0004_product_image"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='product',
-            name='category',
+            model_name="product",
+            name="category",
         ),
         migrations.AlterField(
-            model_name='productcategory',
-            name='image',
-            field=models.ImageField(null=True, upload_to='static/images'),
+            model_name="productcategory",
+            name="image",
+            field=models.ImageField(null=True, upload_to="static/images"),
         ),
         migrations.AddField(
-            model_name='product',
-            name='category',
-            field=models.ManyToManyField(null=True, to='home.productcategory'),
+            model_name="product",
+            name="category",
+            field=models.ManyToManyField(null=True, to="home.productcategory"),
         ),
     ]

@@ -30,16 +30,16 @@ def shop_analyzer(request):
     print(purchase_count)
     max_purchases = reduce(lambda x, y: x if x[1] > y[1] else y, purchase_count)
     min_purchases = reduce(lambda x, y: x if x[1] < y[1] else y, purchase_count)
-    
+
     total_income = 0
     total_count = 0
-    
+
     for el in purchase_count:
         total_income += el[0] * el[1]
         total_count += el[1]
 
-    most_valuable_product = Product.objects.order_by('purchase_count').first()
-    min_valuable_product = Product.objects.order_by('-purchase_count').first()
+    most_valuable_product = Product.objects.order_by("purchase_count").first()
+    min_valuable_product = Product.objects.order_by("-purchase_count").first()
 
     return render(
         request,

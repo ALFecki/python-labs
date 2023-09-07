@@ -20,12 +20,12 @@ from django.views.generic.base import RedirectView
 
 
 urlpatterns = [
-    path('', RedirectView.as_view(url='home/', permanent=False), name='index'),
-    path("auth/", include('login.urls', namespace="login")),
-    path('home/', include('home.urls', namespace='home')),
-    path('cart/', include('cart.urls', namespace='cart')),
-    path('order/', include('order.urls', namespace='order')),
+    path("", RedirectView.as_view(url="home/", permanent=False), name="index"),
+    path("auth/", include("login.urls", namespace="login")),
+    path("home/", include("home.urls", namespace="home")),
+    path("cart/", include("cart.urls", namespace="cart")),
+    path("order/", include("order.urls", namespace="order")),
     path("admin/", admin.site.urls),
-    path('account/', include('analyzer.urls', namespace='account')),
-    path('verification/', include('verify_email.urls'))
+    path("account/", include("analyzer.urls", namespace="account")),
+    path("verification/", include("verify_email.urls")),
 ]

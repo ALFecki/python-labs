@@ -115,7 +115,7 @@ def edit_product(request, id):
                 "edit.html",
                 {"product": product, "form": form, "is_product": True},
             )
-    except:
+    except Exception:
         return HttpResponseNotFound("<h2>Product is not found</h2>")
 
 
@@ -127,7 +127,7 @@ def delete_product(request, id):
         product = Product.objects.get(id=id)
         product.delete()
         return HttpResponseRedirect("/home/toys-list")
-    except:
+    except Exception:
         return HttpResponseNotFound("<h1>Product not found</h1>")
 
 

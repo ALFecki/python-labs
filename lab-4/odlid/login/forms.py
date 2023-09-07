@@ -13,8 +13,8 @@ class RegistrationForm(UserCreationForm):
         max_length=50,
     )
     address = forms.CharField(max_length=50)
-    password1 = forms.CharField(label = 'Password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label = 'Confirm Password',widget=forms.PasswordInput)
+    password1 = forms.CharField(label="Password", widget=forms.PasswordInput)
+    password2 = forms.CharField(label="Confirm Password", widget=forms.PasswordInput)
 
     field_order = [
         "username",

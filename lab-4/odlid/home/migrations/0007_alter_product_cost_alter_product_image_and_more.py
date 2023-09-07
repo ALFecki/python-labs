@@ -4,25 +4,24 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('home', '0006_remove_product_category_product_category'),
+        ("home", "0006_remove_product_category_product_category"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='product',
-            name='cost',
-            field=models.FloatField(help_text='Enter product cost'),
+            model_name="product",
+            name="cost",
+            field=models.FloatField(help_text="Enter product cost"),
         ),
         migrations.AlterField(
-            model_name='product',
-            name='image',
-            field=models.ImageField(blank=True, null=True, upload_to='static/images'),
+            model_name="product",
+            name="image",
+            field=models.ImageField(blank=True, null=True, upload_to="static/images"),
         ),
         migrations.AlterField(
-            model_name='productcategory',
-            name='image',
-            field=models.ImageField(blank=True, null=True, upload_to='static/images'),
+            model_name="productcategory",
+            name="image",
+            field=models.ImageField(blank=True, null=True, upload_to="static/images"),
         ),
     ]

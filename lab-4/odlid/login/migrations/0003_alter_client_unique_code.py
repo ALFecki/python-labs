@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('login', '0002_alter_client_email_alter_client_phone_and_more'),
+        ("login", "0002_alter_client_email_alter_client_phone_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='client',
-            name='unique_code',
-            field=models.PositiveIntegerField(verbose_name='unique_code'),
+            model_name="client",
+            name="unique_code",
+            field=models.PositiveIntegerField(verbose_name="unique_code"),
         ),
     ]

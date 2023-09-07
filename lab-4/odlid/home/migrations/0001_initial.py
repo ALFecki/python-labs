@@ -7,39 +7,93 @@ import home.models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='ProductCategory',
+            name="ProductCategory",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(help_text='Enter category name', max_length=200)),
-                ('image', models.ImageField(blank=True, upload_to='resources/images')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(help_text="Enter category name", max_length=200),
+                ),
+                ("image", models.ImageField(blank=True, upload_to="resources/images")),
             ],
         ),
         migrations.CreateModel(
-            name='ProductModel',
+            name="ProductModel",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(help_text='Enter model name', max_length=200)),
-                ('year_of_manufacture', models.IntegerField(validators=[django.core.validators.MinValueValidator(1984), home.models.ProductModel.max_value_current_year])),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(help_text="Enter model name", max_length=200),
+                ),
+                (
+                    "year_of_manufacture",
+                    models.IntegerField(
+                        validators=[
+                            django.core.validators.MinValueValidator(1984),
+                            home.models.ProductModel.max_value_current_year,
+                        ]
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Product',
+            name="Product",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(help_text='Enter product name', max_length=200)),
-                ('code', models.IntegerField(help_text='Enter product code')),
-                ('cost', models.IntegerField(help_text='Enter product cost')),
-                ('in_prod', models.BooleanField(help_text='Enter is product in production')),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='home.productcategory')),
-                ('model', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='home.productmodel')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(help_text="Enter product name", max_length=200),
+                ),
+                ("code", models.IntegerField(help_text="Enter product code")),
+                ("cost", models.IntegerField(help_text="Enter product cost")),
+                (
+                    "in_prod",
+                    models.BooleanField(help_text="Enter is product in production"),
+                ),
+                (
+                    "category",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="home.productcategory",
+                    ),
+                ),
+                (
+                    "model",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="home.productmodel",
+                    ),
+                ),
             ],
         ),
     ]

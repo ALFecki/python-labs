@@ -6,20 +6,24 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('home', '0009_product_purchase_count'),
+        ("home", "0009_product_purchase_count"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='product',
-            name='code',
-            field=models.PositiveIntegerField(help_text='Enter product code'),
+            model_name="product",
+            name="code",
+            field=models.PositiveIntegerField(help_text="Enter product code"),
         ),
         migrations.AlterField(
-            model_name='product',
-            name='cost',
-            field=models.DecimalField(decimal_places=2, help_text='Enter product cost', max_digits=10, validators=[django.core.validators.MinValueValidator(Decimal('0.01'))]),
+            model_name="product",
+            name="cost",
+            field=models.DecimalField(
+                decimal_places=2,
+                help_text="Enter product cost",
+                max_digits=10,
+                validators=[django.core.validators.MinValueValidator(Decimal("0.01"))],
+            ),
         ),
     ]
