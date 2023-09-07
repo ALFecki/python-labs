@@ -4,7 +4,8 @@ from django.urls import path
 app_name = "home"
 
 urlpatterns = [
-    path("", views.category_list, name="home"),
+    path("", views.index, name="home"),
+    path("categories", views.category_list, name="categories"),
     path("create-category", views.create_category, name="create_category"),
     path("create-model", views.create_model, name="create_model"),
     path("toys-list/create", views.create_product, name="create"),
