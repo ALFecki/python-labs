@@ -163,3 +163,7 @@ def create_model(request):
     else:
         return render(request, "create.html", {"form": form})
     return HttpResponseRedirect("/home/categories")
+
+
+def about_us(request):
+    return render(request, "about.html")

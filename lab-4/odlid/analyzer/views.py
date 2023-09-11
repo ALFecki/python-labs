@@ -23,13 +23,7 @@ def shop_analyzer(request):
     if not request.user.is_staff:
         raise PermissionDenied("Your role is too weak")
 
-    products = Product.objects.all()
     purchase_count = Product.objects.values_list("cost", "purchase_count")
-
-    print(purchase_count[0][1])
-    print(purchase_count)
-    max_purchases = reduce(lambda x, y: x if x[1] > y[1] else y, purchase_count)
-    min_purchases = reduce(lambda x, y: x if x[1] < y[1] else y, purchase_count)
 
     total_income = 0
     total_count = 0
@@ -51,3 +45,7 @@ def shop_analyzer(request):
             "min_valuable_product": min_valuable_product,
         },
     )
+
+
+def reviews_page(request):
+    return render(request, "reviews.html")
