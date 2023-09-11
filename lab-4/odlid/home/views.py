@@ -7,7 +7,8 @@ from cart.forms import CartAddProductForm
 
 
 def index(request):
-    return render(request, "index.html")
+    product = Product.objects.all()
+    return render(request, "index.html", {"latest_products": product[::-1][0:3]})
 
 
 def category_list(request, category=None):

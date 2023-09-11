@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 
 <head>
     <meta charset="utf-8">
@@ -28,65 +28,70 @@
 
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a href="{% url 'home:home' %}" class="navbar-brand" href="#">ODLID.BY</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'home:home' %}">Home</a>
-                    </li>
-                </ul>
-
-
-                <p id="current-time"
-                    style="width: 70%; text-align: center; color: white;margin: 0 auto; position: relative;">
-                </p>
-
-
-
-                {% if user.is_authenticated %}
-                <a href="{% url 'cart:cart_detail' %}" style="color:white;margin-right: 50px;">
-                    <img style="max-width: 25px; max-height: 25px;" src="{% static 'images/cart.png'%}">
-                    Your cart
-                    <img style="max-width: 25px; max-height: 25px;" src="{% static 'images/cart.png'%}">
-                </a>
-                <li class="nav-item dropdown">
-                    <a style="color: white;" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Account
-                    </a>
-                    <ul style="margin-right: 30px;" class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
-                        <li><a class="dropdown-item" href="{% url 'account:history' %}">History</a></li>
-                        {% if user.is_staff%}
-                        <li><a class="dropdown-item" href="{% url 'account:analyze' %}">Analyze</a></li>
-                        {% endif %}
-                        <li>
-                            <hr class="dropdown-divider">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a href="{% url 'home:home' %}" class="navbar-brand" href="#">ODLID.BY</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'home:home' %}">Home</a>
                         </li>
-                        <li><a class="dropdown-item"  href="{% url 'login:logout' %}">Log out</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'home:categories' %}">Catalog</a>
+                        </li>
                     </ul>
-                </li>
-                {% endif %}
 
-                <form class="d-flex" role="search">
-                    {% if not user.is_authenticated %}
-                    <a href="{% url 'login:login' %}" style="color:white; margin-right: 15px;">
-                        LOG IN
+
+                    <p id="current-time"
+                        style="width: 70%; text-align: center; color: white;margin: 0 auto; position: relative;">
+                    </p>
+
+
+
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'cart:cart_detail' %}" style="color:white;margin-right: 50px;">
+                        <img style="max-width: 25px; max-height: 25px;" src="{% static 'images/cart.png'%}">
+                        Your cart
+                        <img style="max-width: 25px; max-height: 25px;" src="{% static 'images/cart.png'%}">
                     </a>
-                    <a href="{% url 'login:registration' %}" style="color:white;">
-                        SIGN UP
-                    </a>
+                    <li class="nav-item dropdown">
+                        <a style="color: white;" class="nav-link dropdown-toggle" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Account
+                        </a>
+                        <ul style="margin-right: 30px;" class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+                            <li><a class="dropdown-item" href="{% url 'account:history' %}">History</a></li>
+                            {% if user.is_staff%}
+                            <li><a class="dropdown-item" href="{% url 'account:analyze' %}">Analyze</a></li>
+                            {% endif %}
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'login:logout' %}">Log out</a></li>
+                        </ul>
+                    </li>
                     {% endif %}
-                </form>
+
+                    <form class="d-flex" role="search">
+                        {% if not user.is_authenticated %}
+                        <a href="{% url 'login:login' %}" style="color:white; margin-right: 15px;">
+                            LOG IN
+                        </a>
+                        <a href="{% url 'login:registration' %}" style="color:white;">
+                            SIGN UP
+                        </a>
+                        {% endif %}
+                    </form>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
     <script>
         let time = document.getElementById('current-time');
@@ -97,10 +102,12 @@
         }, 1000)
 
     </script>
+    <main>
+        {% block content %}
 
-    {% block content %}
+        {% endblock %}
+    </main>
 
-    {% endblock %}
 </body>
 
 </html>
