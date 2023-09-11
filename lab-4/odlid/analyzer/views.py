@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.core.exceptions import PermissionDenied
 from order.models import Order, OrderItem
 from home.models import Product
-from functools import reduce
 
 
 def user_order_history(request):

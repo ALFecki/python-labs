@@ -44,7 +44,9 @@ class Product(models.Model):
 
     image = models.ImageField(upload_to="static/images", blank=True, null=True)
 
-    model = models.ForeignKey(ProductModel, on_delete=models.CASCADE, blank=True, null=True)
+    model = models.ForeignKey(
+        ProductModel, on_delete=models.CASCADE, blank=True, null=True
+    )
     cost = models.DecimalField(
         max_digits=10,
         decimal_places=2,
