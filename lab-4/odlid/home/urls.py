@@ -11,6 +11,7 @@ urlpatterns = [
     path("about", views.about_us, name="about"),
     path("news", views.news, name="news"),
     path("contacts", views.contacts, name="contacts"),
+    path("faq", views.faq, name="faq"),
     path("toys-list/create", views.create_product, name="create"),
     path("toys-list/delete/<int:id>", views.delete_product, name="delete"),
     path("toys-list/edit/<int:id>", views.edit_product, name="edit"),
