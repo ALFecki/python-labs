@@ -6,7 +6,23 @@
 {% endblock %}
 
 {% block content %}
+<div class="d-grid gap-2 col-6 mx-auto py-5">
+    <a href="{% if user.is_authenticated %} {% url 'account:create_review' %} {% else %} {% url 'login:login' %} {% endif %}"
+        class="btn btn-primary btn-lg">Create review</a>
+</div>
 
+<div class="list-group list-group-numbered gap-2 mx-auto py-3 px-5">
+    {% for r in reviews %}
+    <div class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+            <div class="fw-bold">{{ r.user.username }}</div>
+            <div class="fw-bold">{{ r.date }}</div>
+            <q>{{ r.description }}</q>
+        </div>
+        <span class="badge bg-primary rounded-pill">{{ r.rating }}/5</span>
+    </div>
+    {% endfor %}
+</div>
 
 
 

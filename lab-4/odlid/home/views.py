@@ -165,5 +165,13 @@ def create_model(request):
     return HttpResponseRedirect("/home/categories")
 
 
+def news(request):
+    return render(request, "news.html")
+
+
+def contacts(request):
+    return render(request, "contacts.html")
+
+
 def about_us(request):
     return render(request, "about.html")

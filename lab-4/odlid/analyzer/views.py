@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from django.core.exceptions import PermissionDenied
 from order.models import Order, OrderItem
+from analyzer.models import Review
 from home.models import Product
+from datetime import datetime, timezone
+from django.http import HttpResponseRedirect
 
 
 def user_order_history(request):
@@ -47,4 +50,20 @@ def shop_analyzer(request):
 
 
 def reviews_page(request):
-    return render(request, "reviews.html")
+    reviews = Review.objects.all()
+    return render(request, "reviews.html", {"reviews": reviews})
+
+
+def create_review(request):
+    if request.method == "POST":
+        review = Review(
+            user=request.user,
+            date=datetime.now(tz=timezone.utc).isoformat(timespec="seconds"),
+            rating=request.POST.get("rating"),
+            description=request.POST.get("description"),
+        )
+        review.save()
+    else:
+        return render(request, "create_review.html")
+
+    return HttpResponseRedirect("/account/reviews")
