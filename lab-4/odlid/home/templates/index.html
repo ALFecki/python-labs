@@ -1,6 +1,10 @@
 {% extends 'base.html'%}
 {% load static %}
 
+{% block title%}
+<title>ODLID</title>
+{% endblock %}
+
 {% block content %}
 <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
   <div class="carousel-indicators">
@@ -44,7 +48,7 @@
         <div class="carousel-caption text-end text-black">
           <h1>Huge company trusted by many</h1>
           <p>Learn about us and our companions</p>
-          <p><a class="btn btn-lg btn-primary" href="#">About us</a></p>
+          <p><a class="btn btn-lg btn-primary" href="#companions">About us</a></p>
         </div>
       </div>
     </div>
@@ -60,7 +64,7 @@
 </div>
 
 <hr style="margin-top: 80px; margin-bottom: 80px;">
-<h1 class="h1 text-center">WE ARE TRUSTED</h1>
+<h1 id="companions" class="h1 text-center">WE ARE TRUSTED</h1>
 
 <div class="container">
   <div class="row">

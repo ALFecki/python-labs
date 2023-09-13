@@ -1,6 +1,12 @@
 {% extends 'base.html'%}
 {% load static %}
 
+{% block title%}
+<title>
+    About us
+</title>
+{% endblock %}
+
 {% block content %}
 
 
@@ -96,9 +102,11 @@
     </li>
 </ul>
 
-<iframe width="1200" height="615" src="https://www.youtube.com/embed/CxwTLktovTU" type='video/mp4'>
+<iframe class="m-auto d-flex" width="1200" height="615" src="https://www.youtube.com/embed/CxwTLktovTU"
+    type='video/mp4'>
     Тег video не поддерживается вашим браузером.
 </iframe>
+
 
 
 {% endblock %}
