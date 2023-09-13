@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.core.exceptions import PermissionDenied
 from order.models import Order, OrderItem
-from analyzer.models import Review
+from analyzer.models import Review, PromoCode
 from home.models import Product
 from datetime import datetime, timezone
 from django.http import HttpResponseRedirect
@@ -67,3 +67,8 @@ def create_review(request):
         return render(request, "create_review.html")
 
     return HttpResponseRedirect("/account/reviews")
+
+
+def promo(request):
+    promo_codes = PromoCode.objects.all()
+    return render(request, 'promo.html', {"promocodes": promo_codes})

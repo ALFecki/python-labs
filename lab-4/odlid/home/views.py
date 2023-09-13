@@ -179,3 +179,4 @@ def about_us(request):
 
 def faq(request):
     return render(request, "faq.html")
+    
