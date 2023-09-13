@@ -5,6 +5,9 @@ from analyzer.models import Review, PromoCode
 from home.models import Product
 from datetime import datetime, timezone
 from django.http import HttpResponseRedirect
+from io import BytesIO
+import base64
+import matplotlib.pyplot as plt
 
 
 def user_order_history(request):
@@ -19,6 +22,24 @@ def user_order_history(request):
     return render(
         request, "history.html", {"orders": orders, "order_items": order_items}
     )
+
+
+def get_plot():
+    x = [o.created for o in Order.objects.all()]
+    y = []
+    for el in x:
+        orders_in_date = Order.objects.all().filter(created=el)
+        for order in orders_in_date:
+            quantity = sum([i.quantity for i in order.items.all()])
+        y.append(quantity)
+
+    plt.plot(x, y)
+    buf = BytesIO()
+    plt.savefig(buf, format="png")
+    buf.seek(0)
+    string = base64.b64encode(buf.read())
+
+    return string.decode("utf-8")
 
 
 def shop_analyzer(request):
@@ -36,7 +57,7 @@ def shop_analyzer(request):
 
     most_valuable_product = Product.objects.order_by("purchase_count").first()
     min_valuable_product = Product.objects.order_by("-purchase_count").first()
-
+    plot = get_plot()
     return render(
         request,
         "analyze.html",
@@ -45,6 +66,7 @@ def shop_analyzer(request):
             "total_count": total_count,
             "most_valuable_product": most_valuable_product,
             "min_valuable_product": min_valuable_product,
+            "plot": plot,
         },
     )
 
@@ -71,4 +93,4 @@ def create_review(request):
 
 def promo(request):
     promo_codes = PromoCode.objects.all()
-    return render(request, 'promo.html', {"promocodes": promo_codes})
+    return render(request, "promo.html", {"promocodes": promo_codes})

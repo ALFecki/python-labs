@@ -108,7 +108,63 @@
 </iframe>
 
 
+<h3 class="h3 mt-3 m-lg-4 mb-3">Requisites</h3>
+<table class="table table-bordered border-primary" style="vertical-align:middle;">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Other</th>
+        </tr>
+    </thead>
 
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Someone</td>
+            <td>+375 29 888-88-88</td>
+            <td>test@mail.ru</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td rowspan="2">Someone else</td>
+            <td>+375 29 555-55-55</td>
+            <td>user@mail.ru</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <!-- <td >Larry the Bird</td> -->
+            <td>+375 33 333-33-33</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+
+
+</table>
+
+
+<div class="container text-center">
+    <img class="m-auto d-flex" srcset="{% static 'images/small_banner.jpg' %} 1x, {% static 'images/medium_banner.jpg' %} 2x, {% static 'images/large_banner.jpg' %} 3x">
+    <h2 class="h2 text-center">Certificate of Excellence</h2>
+    <h3 class="h3 text-center mt-4 mb-5">This certificate is awarded to:</h3>
+    <h3 class="h3 text-center mt-8">Toys store</h3>
+
+    <article class="lead mt-4 m-auto d-flex">
+        In recognition of outstanding dedication and exceptional service in providing a delightful and enjoyable<br>
+        experience for children and families. Your commitment to offering a wide range of high-quality toys, fostering<br>
+        creativity and imagination, and creating a warm and welcoming environment has made [Toy Store Name] a beloved<br>
+        destination for kids of all ages.<br>
+
+        By offering an extensive selection of toys that inspire learning, playfulness, and wonder, you have contributed<br>
+        to the growth and development of countless young minds. Your passion for promoting imaginative play and<br>
+        providing educational resources has made a significant impact on the community.<br>
+
+        Congratulations on this well-deserved recognition, which reflects the tireless efforts of your dedicated staff<br>
+        and your unwavering commitment to excellence. This company truly stands out as a shining example of what a
+        toy store should be.</article>
+        <p class="lead text-center mt-5">Presented this 9 day of September, 2023.</p>
+</div>
 
 
 {% endblock %}
