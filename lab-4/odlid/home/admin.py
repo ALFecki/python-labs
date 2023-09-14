@@ -25,3 +25,8 @@ class ProductModelAdmin(admin.ModelAdmin):
 @admin.register(models.ProductCategory)
 class ProductCategoryAdmin(admin.ModelAdmin):
     list_display = ["id", "name"]
+
+
+@admin.register(models.News)
+class NewsAdmin(admin.ModelAdmin):
+    list_display = ["image_url", "name", "description"]

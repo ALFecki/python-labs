@@ -68,3 +68,10 @@ class Product(models.Model):
 
     def get_delete_url(self):
         return reverse("home:delete", args=[str(self.id)])
+
+
+class News(models.Model):
+    image_url = models.CharField(null=False)
+    name = models.CharField(null=False)
+    description = models.CharField(null=False)
+    continue_url = models.CharField(null=False, default="localhost:8080")

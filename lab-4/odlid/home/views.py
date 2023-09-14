@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import ProductCategory, Product, ProductModel
+from .models import ProductCategory, Product, ProductModel, News
 from django.core.exceptions import PermissionDenied
 from .forms import ProductForm, ProductCategoryForm, ProductModelForm
 from django.http import HttpResponseRedirect, HttpResponseNotFound
@@ -166,7 +166,7 @@ def create_model(request):
 
 
 def news(request):
-    return render(request, "news.html")
+    return render(request, "news.html", {"news": News.objects.all()})
 
 
 def contacts(request):

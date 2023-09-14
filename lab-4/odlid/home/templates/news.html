@@ -11,50 +11,18 @@
 
 <div class="container marketing">
     <div class="row">
+        {% for n in news %}
         <div class="col-lg-4">
-            <img src="https://static.independent.co.uk/2023/07/28/11/JL%20.jpg?quality=75&width=990&crop=3%3A2%2Csmart&auto=webp"
-                class="bd-placeholder-img rounded-circle" width="140" height="140" aria-label="Some picture"
-                preserveAspectRatio="xMidYMid slice" focusable="false">
-            <title>Some picture</title>
-            <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-            </img>
-            <h2 class="fw-normal">Best Christmas toys 2023</h2>
-            <p>Christmas has come early this year, with John Lewis already gearing up for the festive season by
-                revealing its list of the top toys to put under the tree.</p>
-            <p><a class="btn btn-secondary" target="_blank"
-                    href="https://www.independent.co.uk/extras/indybest/kids/toys-activities/best-christmas-toys-2023-john-lewis-b2383680.html">View
-                    details »</a></p>
-        </div>
-
-        <div class="col-lg-4">
-            <img class="bd-placeholder-img rounded-circle" width="140" height="140"
-                src="https://static.independent.co.uk/2023/01/18/11/SWNS_TOYS_02.jpg?quality=75&width=990&crop=3%3A2%2Csmart&auto=webp"
+            <img src="{{ n.image_url }}" class="bd-placeholder-img rounded-circle" width="140" height="140"
                 aria-label="Some picture" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <title>Some picture</title>
             <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
             </img>
-            <h2 class="fw-normal">Thousands of people in Britain are hoarding toys in their homes</h2>
-            <p>A study of 2,000 adults revealed they each have an average of 20 toys and playthings stashed away, with
-                65 per cent planning to pass them down to their children or grandchildren.</p>
-            <p><a class="btn btn-secondary" target="_blank"
-                    href="https://www.independent.co.uk/life-style/toys-hoarding-uk-parents-kids-b2264372.html">View
+            <h2 class="fw-normal">{{ n.name }}</h2>
+            <p>{{ n.description }}</p>
+            <p><a class="btn btn-secondary" target="_blank" href="{{ n.continue_url}}">View
                     details »</a></p>
         </div>
-
-        <div class="col-lg-4">
-            <img class="bd-placeholder-img rounded-circle" width="140" height="140"
-                src="https://static.independent.co.uk/2022/08/01/11/Chevrolet%20Camaro%20lego%20set%20copy.jpg?quality=75&width=990&crop=3%3A2%2Csmart&auto=webp"
-                aria-label="Some picture" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <title>Some picture</title>
-            <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-            </img>
-            <h2 class="fw-normal">The Lego Chevrolet Camaro Z28 is a vintage classic and it’s available now</h2>
-            <p>Lego has just released the latest vehicle in its “Icons” range and it’s a tribute to an American classic,
-                the Chevrolet Camaro Z28.</p>
-            <p><a class="btn btn-secondary"
-                    href="https://www.independent.co.uk/extras/indybest/kids/toys-activities/lego-chevrolet-camaro-z28-b2135589.html" target="_blank">View
-                    details »</a></p>
-        </div>
+        {% endfor %}
     </div>
 </div>
 

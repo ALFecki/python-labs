@@ -10,7 +10,6 @@ class Client(AbstractUser):
     phone = PhoneNumberField(null=False, region="BY", unique=False)
     city = models.CharField("city", unique=False, max_length=50)
     address = models.CharField("address", unique=False, max_length=50)
-
     objects = CustomUserManager()
 
     USERNAME_FIELD = "username"

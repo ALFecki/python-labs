@@ -38,7 +38,6 @@ def get_plot():
     plt.savefig(buf, format="png")
     buf.seek(0)
     string = base64.b64encode(buf.read())
-
     return string.decode("utf-8")
 
 
