@@ -11,7 +11,7 @@
     {% for promo in promocodes %}
     {%  if promo.is_active %}
     <li class="list-group-item list-group-item-action">
-        <p>{{ promo.name }}</p>
+        <p contenteditable>{{ promo.name }}</p>
         <span class="badge bg-primary rounded-pill">{{ promo.discount }}%</span>
     </li>
     {% endif %}

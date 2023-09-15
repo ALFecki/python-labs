@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth.models import AbstractUser
 from .managers import CustomUserManager
 from phonenumber_field.modelfields import PhoneNumberField
@@ -10,6 +11,7 @@ class Client(AbstractUser):
     phone = PhoneNumberField(null=False, region="BY", unique=False)
     city = models.CharField("city", unique=False, max_length=50)
     address = models.CharField("address", unique=False, max_length=50)
+    age = models.IntegerField(default=16, validators=[MinValueValidator(16), MaxValueValidator(99)])
     objects = CustomUserManager()
 
     USERNAME_FIELD = "username"

@@ -21,6 +21,7 @@ class RegistrationForm(UserCreationForm):
         "email",
         "unique_code",
         "phone",
+        "age"
         "city",
         "address",
         "password1",
@@ -35,6 +36,7 @@ class RegistrationForm(UserCreationForm):
             "unique_code",
             "phone",
             "city",
+            "age",
             "address",
             "password1",
             "password2",
@@ -48,6 +50,7 @@ class RegistrationForm(UserCreationForm):
         user.phone = self.cleaned_data["phone"]
         user.city = self.cleaned_data["city"]
         user.address = self.cleaned_data["address"]
+        user.age = self.cleaned_data["age"]
 
         if commit:
             user.save()
