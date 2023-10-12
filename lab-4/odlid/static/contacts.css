@@ -28,3 +28,18 @@
 .contact p span {
     font-weight: bold;
 }
+
+.vacancy {
+    width: 300px;
+    margin: 10px;
+    float: right;
+    /* clear: both; */
+}
+
+.vacancy details {
+    margin-top: 0;
+}
+
+.vacancy details summary {
+    margin-bottom: 0;
+}

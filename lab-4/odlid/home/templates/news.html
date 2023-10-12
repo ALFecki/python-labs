@@ -7,24 +7,31 @@
 </title>
 {% endblock %}
 
+{% block css %}
+<link rel="stylesheet" href="{% static 'news.css' %}">
+{% endblock %}
+
 {% block content %}
 
-<div class="container marketing">
-    <div class="row">
-        {% for n in news %}
-        <div class="col-lg-4">
-            <img src="{{ n.image_url }}" class="bd-placeholder-img rounded-circle" width="140" height="140"
-                aria-label="Some picture" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-            </img>
-            <h2 class="fw-normal">{{ n.name }}</h2>
-            <p>{{ n.description }}</p>
-            <p><a class="btn btn-secondary" target="_blank" href="{{ n.continue_url}}">View
-                    details »</a></p>
-        </div>
-        {% endfor %}
-    </div>
+<script>
+    function toggleContent(name) {
+        var content = document.getElementById(name);
+        content.querySelector('.article-content').classList.toggle('show');
+    }
+</script>
+
+{% for n in news %}
+<div id="{{ n.name }}" class="article">
+    <img src="{{ n.image_url }}" class="bd-placeholder-img rounded-circle" width="140" height="140"
+        aria-label="Some picture" preserveAspectRatio="xMidYMid slice" focusable="false">
+    <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+    </img>
+    <h2 class="article-title">{{ n.name }}</h2>
+    <p class="article-summary">{{ n.description }}</p>
+    <p class="article-content">{{ n.description }}</p>
+    <div class="read-more" onclick="toggleContent('{{ n.name }}')">Learn more</div>
 </div>
+{% endfor %}
 
 
 
