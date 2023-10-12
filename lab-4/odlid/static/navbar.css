@@ -1,0 +1,125 @@
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 9999;
+}
+
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 5px 10px;
+  margin: 0 5px;
+  border-radius: 3px;
+}
+
+nav a.active {
+  background-color: #fff;
+  color: #333;
+}
+
+nav .logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+nav .menu {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+nav .menu ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav .menu li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav .menu li:last-child::after {
+  content: none;
+}
+
+.navbar .menu li button {
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  padding: 5px 10px;
+  margin: 0 5px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#current_time {
+  text-align: center;
+  color: white;
+  margin: 0 auto;
+  position: relative;
+}
+
+.company-name {
+  font-kerning: auto; 
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: whitesmoke;
+}
+
+.text-with-shadow {
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+}
+
+
+.user-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle::after {
+  content: '\25BE';
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li {
+  margin-bottom: 5px;
+}
+
+.dropdown-menu a {
+  color: #333;
+  text-decoration: none;
+}

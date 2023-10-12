@@ -1,0 +1,72 @@
+.container {
+    display: flex;
+    justify-content: center;
+    /* Центрирование по горизонтали */
+}
+
+.logo {
+    width: 200px;
+    /* Установите ширину логотипа */
+    height: 200px;
+    /* Установите высоту логотипа */
+    transition: transform 0.3s ease;
+    /* Добавьте плавный переход для анимации */
+
+    /* Добавьте другие свойства стиля, такие как background, padding, margin, и т.д. */
+}
+
+.logo:hover {
+    transform: rotate(45deg);
+    /* Пример: поворот логотипа на 45 градусов при наведении курсора */
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: #333;
+    border-radius: 5px;
+}
+
+li:hover {
+    background-color: #e6e6e6;
+}
+
+li::before {
+    content: "•";
+    color: #333;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-family: "Helvetica Neue", 'Courier New', Courier, monospace;
+}
+
+th {
+    background-color: #333;
+}
+
+tr:nth-child(even) {
+    background-color: #333;
+}
+
+tr:hover {
+    background-color: #333;
+}

@@ -1,0 +1,45 @@
+summary {
+    cursor: pointer;
+    outline: none;
+    font-weight: bold;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+summary::before {
+    content: "+";
+    display: inline-block;
+    margin-right: 5px;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+details[open] summary::before {
+    content: "-";
+    transform: rotate(45deg);
+}
+
+details {
+    margin-bottom: 20px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+details[open] {
+    border-color: grey;
+}
+
+details[open] summary {
+    background-color: #338;
+}
+
+details[open] summary:hover {
+    background-color: grey;
+}

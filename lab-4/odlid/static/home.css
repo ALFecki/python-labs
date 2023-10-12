@@ -1,0 +1,141 @@
+.partners-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.round {
+    border-radius: 100px;
+    border: 3px solid blue;
+    box-shadow: 0 0 7px #666;
+}
+
+.partners {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    align-items: center;
+}
+
+.partners li {
+    margin-right: 10px;
+}
+
+.partners li img {
+    object-fit: cover;
+    height: 250px;
+    width: 400px;
+    background-color: aqua;
+}
+
+hr {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-items {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-item {
+    flex: 0 0 100%;
+    width: 100%;
+    /* padding: 20px; */
+    box-sizing: border-box;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    /* padding: 10px 20px; */
+    background: #f1f1f1;
+    border: none;
+    cursor: pointer;
+}
+
+.carousel-control.prev {
+    left: 10px;
+}
+
+.carousel-control.next {
+    right: 10px;
+}
+
+.carousel-animation {
+    animation: carouselSlide 5s infinite;
+}
+
+@keyframes carouselSlide {
+    0% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-100%);
+    }
+
+    40% {
+        transform: translateX(-200%);
+    }
+
+    60% {
+        transform: translateX(-300%);
+    }
+
+    80% {
+        transform: translateX(-400%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Задаем три колонки равной ширины */
+    gap: 20px;
+    /* Устанавливаем промежуток между элементами */
+}
+
+.grid-item {
+    align-items: center;
+    text-align: center;
+    position: static;
+}
+
+.grid-item img {
+    width: 70%;
+    /* Задаем ширину изображения на 100% */
+    height: auto;
+    /* Автоматически рассчитываем высоту изображения */
+}
+
+.grid-item .title {
+    font-weight: bold;
+    /* Устанавливаем жирное начертание для названия товара */
+    margin-top: 10px;
+    /* Добавляем отступ сверху */
+}
+
+.grid-item .price {
+    color: #888888;
+    /* Задаем цвет текста для цены */
+    margin-top: 5px;
+    /* Добавляем небольшой отступ сверху */
+}

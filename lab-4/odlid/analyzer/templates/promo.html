@@ -1,18 +1,22 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block css %}
+<link rel="stylesheet" href="{% static 'promo.css' %}">
+{%endblock%}
+
 
 {% block content %}
 
 <h1 class="h1">Promocodes and sales</h1>
 
 <h2 class="h2">Active</h2>
-<ul class="list-group">
+<ul class="promo-list">
     {% for promo in promocodes %}
     {%  if promo.is_active %}
-    <li class="list-group-item list-group-item-action">
-        <p contenteditable>{{ promo.name }}</p>
-        <span class="badge bg-primary rounded-pill">{{ promo.discount }}%</span>
+    <li class="promo-list-item">
+        <span class="promo-list-item-title">{{ promo.name }}</span>
+        <span class="promo-list-item-discount">{{ promo.discount }}%</span>
     </li>
     {% endif %}
     {% endfor %}
@@ -20,12 +24,12 @@
 
 
 <h2 class="h2">Archived</h2>
-<ul class="list-group">
+<ul class="promo-list">
     {% for promo in promocodes %}
     {%  if not promo.is_active %}
-    <li class="list-group-item list-group-item-action">
-        <p>{{ promo.name }}</p>
-        <span class="badge bg-primary rounded-pill">{{ promo.discount }}%</span>
+    <li class="promo-list-item">
+        <span class="promo-list-item-title">{{ promo.name }}</span>
+        <span class="promo-list-item-discount">{{ promo.discount }}%</span>
     </li>
     {% endif %}
     {% endfor %}

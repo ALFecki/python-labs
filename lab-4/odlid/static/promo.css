@@ -1,0 +1,28 @@
+.promo-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.promo-list-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.promo-list-item::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: #ff0000;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.promo-list-item-title {
+    font-weight: bold;
+}
+
+.promo-list-item-discount {
+    margin-left: auto;
+    font-weight: bold;
+}

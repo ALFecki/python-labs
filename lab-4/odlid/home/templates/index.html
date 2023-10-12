@@ -5,15 +5,20 @@
 <title>ODLID</title>
 {% endblock %}
 
+{%block css %}
+<link rel="stylesheet" href="{% static 'home.css' %}">
+<script type="text/javascript" src="{% static 'js/carousel.js' %}"></script>
+{% endblock %}
+
 {% block content %}
 <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
-  <div class="carousel-indicators">
+  <!-- <div class="carousel-indicators">
     <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class="active"
       aria-current="true"></button>
     <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
-  </div>
-  <div class="carousel-inner">
+  </div> -->
+  <div class="carousel-items">
     <div class="carousel-item active">
 
       <img class="d-block" src="{% static 'images/banner1.jpeg'%}"
@@ -53,61 +58,49 @@
       </div>
     </div>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
+  <button class="carousel-control prev" type="button">
+    Previous
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
+  <button class="carousel-control next" type="button">
+    Next
   </button>
 </div>
 
-<hr style="margin-top: 80px; margin-bottom: 80px;">
-<h1 id="companions" class="h1 text-center">WE ARE TRUSTED</h1>
-
-<div class="container">
-  <div class="row">
-    <div class="col">
+<hr>
+<h1 id="companions" class="text-center">WE ARE TRUSTED</h1>
+<div class="partners-container">
+  <ul class="partners">
+    <li>
       <a class="nav-item nav-link" href="https://www.funtastik.by/" target="_blank">
-        <img class="rounded-3" src="{%static 'images/funtastik.png'%}"
-          style="object-fit: cover; height: 250px; width: 400px;"></img>
+        <img class="round" src="{%static 'images/funtastik.png'%}"></img>
       </a>
-    </div>
-    <div class="col">
+    </li>
+    <li>
       <a class="nav-item nav-link" href="https://www.detmir.by/" target="_blank">
-        <img class="rounded-3" src="{%static 'images/detmir.jpg'%}"
-          style="object-fit: cover; height: 250px; width: 400px;"></img>
+        <img class="round" src="{%static 'images/detmir.jpg'%}"></img>
       </a>
-    </div>
-    <div class="col">
+    </li>
+    <li>
       <a class="nav-item nav-link" href="https://en.wikipedia.org/wiki/Toy_Story" target="_blank">
-        <img class="rounded-3" src="{%static 'images/toystory.png'%}"
-          style="object-fit: cover; height: 250px; width: 400px; background-color: aqua;"></img>
+        <img class="round" src="{%static 'images/toystory.png'%}"></img>
       </a>
-    </div>
-  </div>
+    </li>
+  </ul>
 </div>
 
-<hr style="margin-top: 80px; margin-bottom: 80px;">
+<hr>
 
 
-
-<div class="container">
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-    {% for product in latest_products%}
-    <div class="col">
-      <div class="card shadow-sm">
-        <img src="{{ product.image.url }}">
-        <div class="card-body">
-          <p class="card-text">{{ product.name }}</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <a class="btn btn-sm btn-outline-secondary" href="{{ product.get_detail_url }}">Learn more</a>
-            <small class="text-body-secondary">{{ product.cost }}$</small>
-          </div>
-        </div>
-      </div>
+<div class="grid-container">
+  {% for product in latest_products%}
+  <div class="grid-item">
+    <img src="{{ product.image.url }}">
+    <p class="title">{{ product.name }}</p>
+    <div class="d-flex justify-content-between align-items-center">
+      <a class="btn btn-sm btn-outline-secondary" href="{{ product.get_detail_url }}">Learn more</a>
+      <small class="price">{{ product.cost }}$</small>
     </div>
-    {% endfor %}
   </div>
-  {% endblock %}
+  {% endfor %}
+</div>
+{% endblock %}

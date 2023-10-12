@@ -1,0 +1,20 @@
+body {
+    background: linear-gradient(to bottom, #222222, #000000);
+    color: white;
+    margin: 0;
+    margin-top: 70px;
+}
+
+footer {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+.license {
+    display: flex;
+    justify-content: flex-end;
+}

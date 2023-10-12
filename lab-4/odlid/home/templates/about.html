@@ -7,38 +7,46 @@
 </title>
 {% endblock %}
 
+{% block css %}
+<link rel="stylesheet" href="{% static 'about.css' %}">
+{% endblock %}
+
 {% block content %}
 
 
 <h1 class="h1 mt-5 m-lg-4 mb-5">ABOUT US</h1>
-
-<article class="lead m-lg-5">
-    Welcome to our company, your ultimate destination for all things playful and exciting!
-    We are a leading toys store company dedicated to bringing joy, imagination, and laughter into the lives of children
-    and adults alike.
-    Step into our world and discover a treasure trove of enchanting toys, games, and collectibles that will ignite your
-    imagination and create lasting memories.
-</article>
-
+<div class="container">
+    <article class="lead m-lg-5">
+        Welcome to our company, your ultimate destination for all things playful and exciting!
+        We are a leading toys store company dedicated to bringing joy, imagination, and laughter into the lives of
+        children
+        and adults alike.
+        Step into our world and discover a treasure trove of enchanting toys, games, and collectibles that will ignite
+        your
+        imagination and create lasting memories.
+    </article>
+</div>
 <h3 class="h3 mt-3 m-lg-4 mb-3">Our Mission</h3>
-<article class="m-lg-5">
-    Our mission is to inspire and nurture the boundless imagination of children while fostering a
-    sense of nostalgia and wonder in adults. We believe in the power of play and its ability to nurture creativity,
-    problem-solving skills, and social development. Our goal is to provide an exceptional shopping experience, offering
-    a diverse range of high-quality toys that entertain, educate, and ignite the imagination of young minds.
-</article>
-
+<div class="container">
+    <article class="m-lg-5">
+        Our mission is to inspire and nurture the boundless imagination of children while fostering a
+        sense of nostalgia and wonder in adults. We believe in the power of play and its ability to nurture creativity,
+        problem-solving skills, and social development. Our goal is to provide an exceptional shopping experience,
+        offering
+        a diverse range of high-quality toys that entertain, educate, and ignite the imagination of young minds.
+    </article>
+</div>
 <h3 class="h3 mt-3 m-lg-4 mb-3">History</h3>
-<ul class="list-group list-group-flush m-lg-5">
+<ul>
 
-    <li class="list-group-item">
+    <li>
         1990: [Company Name] is founded by [Founder's Name] in a small storefront in [City]. With a deep passion for
         toys
         and a dream to create a magical experience for children and families, [Founder's Name] sets out on a mission to
         bring joy and imagination to the community.
 
     </li>
-    <li class="list-group-item">
+    <li>
         1992: The popularity of [Company Name] grows rapidly, and the store expands to a larger location to accommodate
         the
         increasing demand for its diverse range of toys. The expanded space allows for a wider selection of toys, games,
@@ -46,14 +54,14 @@
         collectibles to delight customers of all ages.
 
     </li>
-    <li class="list-group-item">
+    <li>
         1995: [Company Name] establishes itself as a leading destination for toys in the region, gaining a reputation
         for
         its exceptional customer service, knowledgeable staff, and high-quality products. The store becomes a beloved
         fixture in the community as generations of families continue to visit and create lasting memories.
 
     </li>
-    <li class="list-group-item">
+    <li>
         2000: Embracing technological advancements, [Company Name] launches its first e-commerce website, allowing
         customers
         to browse and purchase toys from the comfort of their homes. The online store expands the company's reach beyond
@@ -61,7 +69,7 @@
         local community, attracting toy enthusiasts from all over the country.
 
     </li>
-    <li class="list-group-item">
+    <li>
         2005: [Company Name] opens its second location in a bustling shopping district, further cementing its presence
         in
         the toy retail industry. The new store offers an immersive and interactive shopping experience, complete with
@@ -69,7 +77,7 @@
         areas and themed displays that captivate the imagination of visitors.
 
     </li>
-    <li class="list-group-item">
+    <li>
         2010: In celebration of its 20th anniversary, [Company Name] launches a series of community initiatives,
         partnering
         with local schools and organizations to provide toys and play experiences to underprivileged children. The
@@ -77,14 +85,14 @@
         commitment to giving back becomes an integral part of its identity.
 
     </li>
-    <li class="list-group-item">
+    <li>
         2015: [Company Name] expands its product offerings to include a wider range of educational toys, recognizing the
         importance of play in early childhood development. The store becomes a go-to destination for parents and
         educators
         seeking toys that foster learning, creativity, and critical thinking skills.
 
     </li>
-    <li class="list-group-item">
+    <li>
         2020: Despite the challenges posed by the global pandemic, [Company Name] adapts and continues to serve its
         customers through online channels, offering virtual shopping experiences, curbside pickup, and doorstep
         delivery.
@@ -92,7 +100,7 @@
         community.
 
     </li>
-    <li class="list-group-item">
+    <li>
         Present: With multiple locations, a thriving online presence, and an unwavering commitment to providing joy and
         inspiration through play, [Company Name] remains a beloved and trusted name in the toy retail industry. As the
         company looks to the future, it continues to innovate, explore new trends, and stay true to its founding
@@ -102,10 +110,12 @@
     </li>
 </ul>
 
+<div class="container">
 <iframe class="m-auto d-flex" width="1200" height="615" src="https://www.youtube.com/embed/CxwTLktovTU"
     type='video/mp4'>
     Тег video не поддерживается вашим браузером.
 </iframe>
+</div>
 
 
 <h3 class="h3 mt-3 m-lg-4 mb-3">Requisites</h3>
@@ -145,7 +155,9 @@
 
 
 <div class="container">
-    <img class="m-auto d-flex" srcset="{% static 'images/small_banner.jpg' %} 1x, {% static 'images/medium_banner.jpg' %} 2x, {% static 'images/large_banner.jpg' %} 3x">
+    <img class="logo" src="{% static 'images/toys.png' %}">
+</div>
+    <!-- <img class="m-auto d-flex" srcset="{% static 'images/small_banner.jpg' %} 1x, {% static 'images/medium_banner.jpg' %} 2x, {% static 'images/large_banner.jpg' %} 3x"> -->
     <h2 class="h2 text-center">Certificate of Excellence</h2>
     <h3 class="h3 text-center mt-4 mb-5">This certificate is awarded to:</h3>
     <h3 class="h3 text-center mt-8">Toys store</h3>
@@ -165,8 +177,8 @@
         and your unwavering commitment to excellence.<br>
         This company truly stands out as a shining example of what a<br>
         toy store should be.</pre>
-        <p class="lead text-center mt-5">Presented this 9 day of September, 2023.</p>
-</div>
+    <p class="lead text-center mt-5">Presented this 9 day of September, 2023.</p>
+
 
 
 {% endblock %}

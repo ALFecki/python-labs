@@ -9,98 +9,35 @@
 
 {% block content %}
 
+{% block css %}
+<link rel="stylesheet" href="{% static 'contacts.css' %}">
+{%endblock%}
 
-<div class="container px-4 py-5">
-    <h2 class="pb-2 border-bottom">Contacts</h2>
 
-    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-        <div class="col">
-            <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg">
-                <img src="{% static 'images/krosh.png'%}">
-                <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                    <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">KROSH</h3>
-                    <p class="lead">Main toy supplier</p>
-                    <ul class="d-flex list-unstyled mt-auto">
-                        <li class="me-auto">
-                            <img src="{%static 'images/logo.png'%}" alt="Logo" width="32" height="32"
-                                class="rounded-circle border border-white">
-                        </li>
-                        <li class="d-flex align-items-center me-3">
-                            <svg class="bi me-2" width="1em" height="1em">
-                                <use xlink:href="#geo-fill"></use>
-                            </svg>
-                            <small>krosh@gmail.com</small>
-                        </li>
-                        <li class="d-flex align-items-center">
-                            <svg class="bi me-2" width="1em" height="1em">
-                                <use xlink:href="#calendar3"></use>
-                            </svg>
-                            <small>+375(29)123-45-67</small>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+<h2 class="pb-2 border-bottom">Contacts</h2>
 
-        <div class="col">
-            <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg">
-                <img src="{% static 'images/nusha.png'%}">
-
-                <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                    <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">NUSHA
-                    </h3>
-                    <p class="lead">Head of sales department</p>
-                    <ul class="d-flex list-unstyled mt-auto">
-                        <li class="me-auto">
-                            <img src="{%static 'images/logo.png'%}" alt="Logo" width="32" height="32"
-                                class="rounded-circle border border-white">
-                        </li>
-                        <li class="d-flex align-items-center me-3">
-                            <svg class="bi me-2" width="1em" height="1em">
-                                <use xlink:href="#geo-fill"></use>
-                            </svg>
-                            <small>nusha@gmail.com</small>
-                        </li>
-                        <li class="d-flex align-items-center">
-                            <svg class="bi me-2" width="1em" height="1em">
-                                <use xlink:href="#calendar3"></use>
-                            </svg>
-                            <small>+375(29)987-65-43</small>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg">
-                <img src="{%static 'images/pin.png'%}">
-                <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-                    <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">PIN</h3>
-                    <p class="lead">Electric</p>
-                    <ul class="d-flex list-unstyled mt-auto">
-                        <li class="me-auto">
-                            <img src="{%static 'images/logo.png'%}" alt="Logo" width="32" height="32"
-                                class="rounded-circle border border-white">
-                        </li>
-                        <li class="d-flex align-items-center me-3">
-                            <svg class="bi me-2" width="1em" height="1em">
-                                <use xlink:href="#geo-fill"></use>
-                            </svg>
-                            <small>pin229@gmail.com</small>
-                        </li>
-                        <li class="d-flex align-items-center">
-                            <svg class="bi me-2" width="1em" height="1em">
-                                <use xlink:href="#calendar3"></use>
-                            </svg>
-                            <small>+375(29)456-12-48</small>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-        </div>
+<div class="contacts-container">
+    <div class="contact">
+        <img src="{% static 'images/krosh.png'%}">
+        <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">KROSH</h3>
+        <p>Main toy supplier</p>
+        <p>krosh@gmail.com</p>
     </div>
+    <div class="contact">
+        <img src="{% static 'images/nusha.png'%}">
+        <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">NUSHA</h3>
+        <p class="lead">Head of sales department</p>
+        <p>nusha@gmail.com</p>
+
+    </div>
+
+    <div class="contact">
+        <img src="{%static 'images/pin.png'%}">
+        <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">PIN</h3>
+        <p class="lead">Electric</p>
+        <p>pin229@gmail.com</p>
+    </div>
+</div>
 </div>
 
 <h2 class="h2">Vacancies</h2>
