@@ -51,3 +51,23 @@ window.addEventListener('focus', function () {
 window.addEventListener('blur', function () {
     clearInterval(intervalId);
 });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const gridItems = document.querySelectorAll('.grid-item');
+
+    gridItems.forEach(item => {
+        item.addEventListener('mousemove', (e) => {
+            const rect = item.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width;
+            const y = (e.clientY - rect.top) / rect.height;
+            const rotationX = 10 * (0.5 - y);
+            const rotationY = 10 * (0.5 - x);
+            item.querySelector('.item-content').style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg) scale(1.1)`;
+        });
+
+        item.addEventListener('mouseleave', () => {
+            item.querySelector('.item-content').style.transform = 'rotateY(0deg) scale(1)';
+        });
+    });
+});

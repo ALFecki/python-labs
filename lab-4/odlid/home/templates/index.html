@@ -72,7 +72,7 @@
 
 <hr>
 <h1 id="companions" class="text-center">WE ARE TRUSTED</h1>
-<div class="partners-container" >
+<div class="partners-container">
   <ul class="partners">
     <li class="partner">
       <a class="nav-item nav-link" href="https://www.funtastik.by/" target="_blank">
@@ -98,11 +98,13 @@
 <div class="grid-container">
   {% for product in latest_products%}
   <div class="grid-item">
+    <div class="item-content">
     <img src="{{ product.image.url }}">
     <p class="title">{{ product.name }}</p>
     <div class="d-flex justify-content-between align-items-center">
       <a class="btn btn-sm btn-outline-secondary" href="{{ product.get_detail_url }}">Learn more</a>
       <small class="price">{{ product.cost }}$</small>
+    </div>
     </div>
   </div>
   {% endfor %}

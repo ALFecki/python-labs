@@ -124,7 +124,6 @@ hr {
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
 
@@ -136,11 +135,34 @@ hr {
     transition: transform 0.3s ease;
 }
 
-.grid-item:hover {
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+.grid-item {
+    position: relative;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.item-content {
+    transform-style: preserve-3d;
+    transition: transform 0.3s, box-shadow 0.3s;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.grid-item:hover .item-content {
+    transform: rotateY(10deg) scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+
+/* .grid-item:hover {
     transform: scale(1.05);
-    /* Увеличивает элемент при наведении */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    /* Добавляет тень для эффекта объема */
 }
 
 .grid-item img {
@@ -151,7 +173,6 @@ hr {
 
 .grid-item:hover img {
     transform: scale(1.2);
-    /* Увеличивает изображение при наведении */
 }
 
 .grid-item .btn {
@@ -160,8 +181,7 @@ hr {
 
 .grid-item:hover .btn {
     transform: translateY(-5px);
-    /* Поднимает кнопку при наведении */
-}
+} */
 
 .grid-item img {
     width: 70%;
