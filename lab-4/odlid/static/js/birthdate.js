@@ -1,7 +1,23 @@
 var birthDate = localStorage.getItem("birthDate");
 
+function isValidDate(dateString) {
+    var regEx = /^\d{2}\.\d{2}\.\d{4}$/;
+    if (!dateString.match(regEx)) return false;
+    var parts = dateString.split(".");
+    var day = parseInt(parts[0]);
+    var month = parseInt(parts[1]);
+    var year = parseInt(parts[2]);
+    if (month < 1 || month > 12) return false;  // Неправильный месяц
+    if (day < 1 || day > 31) return false;  // Неправильный день
+    if (year < 1900 || year > new Date().getFullYear()) return false;  // Неправильный год
+    return true;
+}
+
+
 if (!birthDate) {
-    var birthDate = prompt("Введите дату рождения в формате ДД.ММ.ГГГГ:");
+    do {
+        birthDate = prompt("Введите дату рождения в формате ДД.ММ.ГГГГ:");
+    } while (!isValidDate(birthDate));
 
     var parts = birthDate.split(".");
     var day = parseInt(parts[0]);
