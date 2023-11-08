@@ -56,6 +56,13 @@
                 </tbody>
             </table>
 
+            <form id="promoForm">
+                <label>Promo: </label>
+                <input id="input_promo" placeholder="Enter your promo">
+                <button type="button" id="btnCheckPromo">Check Promo</button>
+            </form>
+            
+
             <div class="buttons">
                 <a href="{% url 'home:toys_list' %}" type="button">Continue shopping</a>
                 <a href="{% url 'order:order_create' %}" type="button">
@@ -68,5 +75,7 @@
         </div>
     </div>
 </div>
+
+<script src="{% static 'js/promo.js' %}"></script>
 
 {% endblock %}

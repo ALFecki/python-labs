@@ -14,5 +14,6 @@ class Review(models.Model):
 
 class PromoCode(models.Model):
     name = models.TextField(null=False)
+    code = models.IntegerField()
     is_active = models.BooleanField(null=False, default=True)
     discount = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(100)])

@@ -1,10 +1,12 @@
+import json
 from django.shortcuts import render
+from django.core import serializers
 from django.core.exceptions import PermissionDenied
 from order.models import Order, OrderItem
 from analyzer.models import Review, PromoCode
 from home.models import Product
 from datetime import datetime, timezone
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseNotFound, HttpResponseRedirect, JsonResponse
 from io import BytesIO
 import base64
 import matplotlib.pyplot as plt
@@ -94,8 +96,18 @@ def promo(request):
     promo_codes = PromoCode.objects.all()
     return render(request, "promo.html", {"promocodes": promo_codes})
 
+
+def check_promo(request, promo):
+    promo = PromoCode.objects.filter(code=promo).first()
+    if promo is not None and promo.is_active:
+        return JsonResponse(data={"valid": True, "discount": promo.discount})
+    else:
+        return HttpResponseNotFound()
+
+
 def test(request):
-    return render(request, 'test.html')
+    return render(request, "test.html")
+
 
 def task(request):
-    return render(request, 'task.html')
+    return render(request, "task.html")
