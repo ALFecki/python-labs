@@ -111,10 +111,10 @@
 </ul>
 
 <div class="container">
-<iframe class="m-auto d-flex" width="1200" height="615" src="https://www.youtube.com/embed/CxwTLktovTU"
-    type='video/mp4'>
-    Тег video не поддерживается вашим браузером.
-</iframe>
+    <iframe class="m-auto d-flex" width="1200" height="615" src="https://www.youtube.com/embed/CxwTLktovTU"
+        type='video/mp4'>
+        Тег video не поддерживается вашим браузером.
+    </iframe>
 </div>
 
 
@@ -187,5 +187,28 @@
     <p class="lead text-center mt-5">Presented this 9 day of September, 2023.</p>
 
 </section>
+
+
+<br>
+
+<h1>Настройка внешнего вида страницы</h1>
+
+<form id="settingsForm">
+    <label>
+        <input type="checkbox" id="fontSizeCheckbox"> Изменить размер шрифта
+    </label>
+    <br>
+
+    <label>
+        <input type="checkbox" id="textColorCheckbox"> Изменить цвет текста
+    </label>
+    <br>
+
+    <label>
+        <input type="checkbox" id="backgroundColorCheckbox"> Изменить цвет фона
+    </label>
+</form>
+
+<script src="{% static 'js/page_form.js' %}"></script>
 
 {% endblock %}
