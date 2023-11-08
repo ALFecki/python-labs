@@ -5,6 +5,12 @@ body {
     margin-top: 70px;
 }
 
+p {
+    padding: 10px 20px 10px 50px;
+    text-indent: 40px;
+    line-height: 150%;
+}
+
 footer {
     bottom: 0;
     left: 0;
@@ -17,4 +23,20 @@ footer {
 .license {
     display: flex;
     justify-content: flex-end;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+.visit a:visited {
+    color: red;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        background: white;
+    }
 }

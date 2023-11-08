@@ -40,14 +40,14 @@ nav .menu {
   padding: 0;
 }
 
-nav .menu ul {
+nav > .menu ul {
   display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-nav .menu li {
+nav .menu ul > li {
   list-style: none;
   margin: 0;
   padding: 0;

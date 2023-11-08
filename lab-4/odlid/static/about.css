@@ -1,23 +1,16 @@
 .container {
     display: flex;
     justify-content: center;
-    /* Центрирование по горизонтали */
 }
 
 .logo {
     width: 200px;
-    /* Установите ширину логотипа */
     height: 200px;
-    /* Установите высоту логотипа */
     transition: transform 0.3s ease;
-    /* Добавьте плавный переход для анимации */
-
-    /* Добавьте другие свойства стиля, такие как background, padding, margin, и т.д. */
 }
 
 .logo:hover {
     transform: rotate(45deg);
-    /* Пример: поворот логотипа на 45 градусов при наведении курсора */
 }
 
 ul {
@@ -26,7 +19,7 @@ ul {
     margin: 0;
 }
 
-li {
+ li {
     padding: 10px;
     margin-bottom: 5px;
     background-color: #333;
@@ -37,13 +30,48 @@ li:hover {
     background-color: #e6e6e6;
 }
 
+article {
+    border-width: 2px;
+    border-style: solid;
+    letter-spacing: 2px;
+    word-wrap: break-word;
+}
+
+article::first-letter {
+    color: red;
+    font-size: large;
+}
+
+article::before {
+    content: "КРУТАЯ ЛАБА ПО ВЕБУ   "
+}
+
+article::after {
+    content: "КРУТАЯ ЛАБА ПО ВЕБУ   "
+}
+
+article::selection {
+    color: black;
+}
 li::before {
-    content: "•";
+    content: "\20aa";
     color: #333;
     font-weight: bold;
     display: inline-block;
     width: 1em;
     margin-left: -1em;
+}
+
+li:first-child {
+    background-color: aqua;
+}
+
+li:nth-child(3) {
+    background-color: yellow;
+}
+
+li:last-child {
+    background-color: green;
 }
 
 table {
@@ -58,6 +86,7 @@ th,
 td {
     padding: 8px;
     border-bottom: 1px solid #ddd;
+    
     font-family: "Helvetica Neue", 'Courier New', Courier, monospace;
 }
 
@@ -81,7 +110,6 @@ tr:hover {
 
 td:empty::before {
     content: '\00a0';
-    /* Добавляем неразрывный пробел */
 }
 
 td:empty::before {
@@ -89,4 +117,28 @@ td:empty::before {
     background-color: yellow;
     width: 100%;
     height: 100%;
+}
+
+
+.certificate {
+    background-image: url('https://i.pinimg.com/originals/0f/18/72/0f1872ae8eef2e9e06c32d0e30277ac2.jpg');
+    -moz-background-image: url('https://i.pinimg.com/originals/0f/18/72/0f1872ae8eef2e9e06c32d0e30277ac2.jpg');
+    -webkit-background-image: url('https://i.pinimg.com/originals/0f/18/72/0f1872ae8eef2e9e06c32d0e30277ac2.jpg');
+    color: white;
+    text-align: center;
+    width: 900px;
+    height: auto;
+    margin-left: 25%;
+    z-index: 1  ;
+    border-image: url('https://cdn.firstcry.com/education/2022/11/06094158/Toy-Names-For-Kids.jpg');
+    border: 10px solid;
+}
+
+.certificate p, pre {
+    z-index: 2;
+    font-family: 'Ubuntu';
+}
+
+h3 {
+    font-variant: small-caps;
 }

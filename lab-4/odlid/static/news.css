@@ -1,6 +1,15 @@
+@font-face {
+    font-family: 'Super Milk';
+    src: url("{% static '../fonts/Super Milk.ttf' %}") format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 .article {
     width: 800px;
     margin: 0 auto;
+    font-family: 'Super Milk', sans-serif;
 }
 
 .article-title {
@@ -10,21 +19,17 @@
 }
 
 .article-summary {
-    height: 60px;
-    /* Высота области для краткой информации */
+    /* height: 60px;     */
     overflow: hidden;
     text-overflow: ellipsis;
-    /* Многоточие, когда текст не помещается */
+    height: 20px;
 }
 
 .article-content {
     column-count: 2;
-    /* Две колонки для текста статьи */
     column-gap: 20px;
-    /* Расстояние между колонками */
     margin-top: 20px;
     display: none;
-    /* Скрыть полный текст статьи по умолчанию */
 }
 
 .article-content p {
@@ -33,7 +38,6 @@
 
 .article-content.show {
     display: block;
-    /* Показать полный текст статьи по нажатию кнопки */
 }
 
 .read-more {

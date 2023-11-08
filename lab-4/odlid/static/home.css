@@ -108,9 +108,7 @@ hr {
 .grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* Задаем три колонки равной ширины */
     gap: 20px;
-    /* Устанавливаем промежуток между элементами */
 }
 
 .grid-item {
@@ -121,21 +119,29 @@ hr {
 
 .grid-item img {
     width: 70%;
-    /* Задаем ширину изображения на 100% */
     height: auto;
-    /* Автоматически рассчитываем высоту изображения */
 }
 
 .grid-item .title {
     font-weight: bold;
-    /* Устанавливаем жирное начертание для названия товара */
     margin-top: 10px;
-    /* Добавляем отступ сверху */
 }
 
 .grid-item .price {
     color: #888888;
-    /* Задаем цвет текста для цены */
     margin-top: 5px;
-    /* Добавляем небольшой отступ сверху */
+}
+
+button[class^="carousel-"] {
+    background-color: blue;
+    color: white;
+}
+
+button[class$="prev"] {
+    background-color: red;
+    color: white;
+}
+
+button[type="button"] {
+    font-family: 'Courier New', Courier, monospace;
 }
