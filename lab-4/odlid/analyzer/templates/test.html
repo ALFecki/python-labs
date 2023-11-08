@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}
+<title>Test</title>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'table.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+<div id="table-controls">
+    <label for="table-size">Размер таблицы: </label>
+    <input type="number" id="table-size" min="1">
+    <button id="create-table-button">Создать таблицу</button>
+  </div>    
+<div id="table-container">
+    <button id="transpose-button">Транспонировать</button>
+    <button id="add-row-button">Добавить ряд</button>
+    <button id="add-column-button">Добавить колонку</button>
+    <label for="max-selection">Макс. выбор ячеек в ряду/колонке: </label>
+    <input type="number" id="max-selection" min="1">
+    <table id="table"></table>
+  </div>
+
+  <script type="text/javascript" src="{% static 'js/table.js' %}"></script>
+
+{% endblock %}
+  

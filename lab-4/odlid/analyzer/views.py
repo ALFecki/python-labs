@@ -93,3 +93,6 @@ def create_review(request):
 def promo(request):
     promo_codes = PromoCode.objects.all()
     return render(request, "promo.html", {"promocodes": promo_codes})
+
+def test(request):
+    return render(request, 'test.html')

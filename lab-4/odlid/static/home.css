@@ -43,8 +43,8 @@
 .partner.disappear {
     opacity: 0;
     transform: translateY(-30px);
-  }
-  
+}
+
 
 hr {
     margin-top: 80px;
@@ -131,7 +131,36 @@ hr {
 .grid-item {
     align-items: center;
     text-align: center;
-    position: static;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.grid-item:hover {
+    transform: scale(1.05);
+    /* Увеличивает элемент при наведении */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    /* Добавляет тень для эффекта объема */
+}
+
+.grid-item img {
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.grid-item:hover img {
+    transform: scale(1.2);
+    /* Увеличивает изображение при наведении */
+}
+
+.grid-item .btn {
+    transition: transform 0.3s ease;
+}
+
+.grid-item:hover .btn {
+    transform: translateY(-5px);
+    /* Поднимает кнопку при наведении */
 }
 
 .grid-item img {

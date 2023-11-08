@@ -24,14 +24,16 @@ document.querySelector('.carousel-control.next').addEventListener('click', funct
     carouselSlide('next');
 });
 
-document.getElementById('update-interval').addEventListener('click', function (e) {
-    e.preventDefault();
-    const newInterval = document.getElementById('interval').value * 1000;
-    clearInterval(intervalId);
-    intervalId = setInterval(function () {
-        carouselSlide('next');
-    }, newInterval);
-});
+if (document.getElementById('update-interval')) {
+    document.getElementById('update-interval').addEventListener('click', function (e) {
+        e.preventDefault();
+        const newInterval = document.getElementById('interval').value * 1000;
+        clearInterval(intervalId);
+        intervalId = setInterval(function () {
+            carouselSlide('next');
+        }, newInterval);
+    });
+}
 
 intervalId = setInterval(function () {
     carouselSlide('next');
