@@ -1,3 +1,5 @@
+let intervalId;
+
 function carouselSlide(direction) {
     const carouselItems = document.querySelector('.carousel-items');
     const itemWidth = document.querySelector('.carousel-item').offsetWidth;
@@ -31,7 +33,19 @@ document.getElementById('update-interval').addEventListener('click', function (e
     }, newInterval);
 });
 
-
-let intervalId = setInterval(function () {
+intervalId = setInterval(function () {
     carouselSlide('next');
 }, 5000);
+
+
+window.addEventListener('focus', function () {
+    const newInterval = document.getElementById('interval').value;
+    clearInterval(intervalId);
+    intervalId = setInterval(function () {
+        carouselSlide('next');
+    }, newInterval);
+});
+
+window.addEventListener('blur', function () {
+    clearInterval(intervalId);
+});

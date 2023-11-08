@@ -7,7 +7,6 @@
 
 {%block css %}
 <link rel="stylesheet" href="{% static 'home.css' %}">
-
 {% endblock %}
 
 {% block content %}
@@ -73,21 +72,21 @@
 
 <hr>
 <h1 id="companions" class="text-center">WE ARE TRUSTED</h1>
-<div class="partners-container">
+<div class="partners-container" >
   <ul class="partners">
-    <li>
+    <li class="partner">
       <a class="nav-item nav-link" href="https://www.funtastik.by/" target="_blank">
-        <img class="round" src="{%static 'images/funtastik.png'%}"></img>
+        <img class="round animated-img" src="{%static 'images/funtastik.png'%}"></img>
       </a>
     </li>
-    <li>
+    <li class="partner">
       <a class="nav-item nav-link" href="https://www.detmir.by/" target="_blank">
-        <img class="round" src="{%static 'images/detmir.jpg'%}"></img>
+        <img class="round animated-img" src="{%static 'images/detmir.jpg'%}"></img>
       </a>
     </li>
-    <li>
+    <li class="partner">
       <a class="nav-item nav-link" href="https://en.wikipedia.org/wiki/Toy_Story" target="_blank">
-        <img class="round" src="{%static 'images/toystory.png'%}"></img>
+        <img class="round animated-img" src="{%static 'images/toystory.png'%}"></img>
       </a>
     </li>
   </ul>
@@ -110,4 +109,5 @@
 </div>
 
 <script type="text/javascript" src="{% static 'js/carousel.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/partners.js' %}"></script>
 {% endblock %}

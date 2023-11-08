@@ -29,6 +29,23 @@
     background-color: aqua;
 }
 
+.partner {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.partner.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.partner.disappear {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  
+
 hr {
     margin-top: 80px;
     margin-bottom: 80px;
