@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('backgroundColorInput').addEventListener('input', function() {
                     if (backgroundColorCheckbox.checked) {
                         const backgroundColor = document.getElementById('backgroundColorInput').value;
-                        document.body.style.backgroundColor = backgroundColor;
+                        document.body.style.background = backgroundColor;
                     }
                 });
             }
