@@ -11,6 +11,9 @@
 {% endblock %}
 
 {% block content %}
+
+
+
 <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
   <div class="carousel-items">
     <div class="carousel-item active">
@@ -59,6 +62,14 @@
     Next
   </button>
 </div>
+
+{% if user.is_superuser %}
+<form id="interval-form">
+  <label for="interval">Интервал прокручивания (в секундах):</label>
+  <input type="number" id="interval" value="5">
+  <button id="update-interval">Обновить интервал</button>
+</form>
+{% endif %}
 
 <hr>
 <h1 id="companions" class="text-center">WE ARE TRUSTED</h1>
