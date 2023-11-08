@@ -96,3 +96,6 @@ def promo(request):
 
 def test(request):
     return render(request, 'test.html')
+
+def task(request):
+    return render(request, 'task.html')

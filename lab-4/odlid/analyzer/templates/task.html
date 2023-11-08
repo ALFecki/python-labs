@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}
+<title>Task</title>
+{% endblock %}
+
+{% block css %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<form id="dateForm">
+    <label for="month">Месяц:</label>
+    <input type="text" id="month" placeholder="Месяц">
+    <label for="day">Число:</label>
+    <input type="number" id="day" min="1" max="31" placeholder="Число">
+    <label for="file">Импорт из файла:</label>
+    <input type="file" id="file" accept=".txt">
+    <button type="submit">Добавить</button>
+</form>
+
+<div>
+    <h3>Летние даты (summer):</h3>
+    <ul id="summerDates"></ul>
+</div>
+
+<div>
+    <h3>Зимние даты (winter):</h3>
+    <ul id="winterDates"></ul>
+</div>
+
+<script src="{% static 'js/tasks/task.js' %}"></script>
+
+{% endblock %}
