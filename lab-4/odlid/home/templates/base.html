@@ -21,6 +21,10 @@
         crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="{% static 'navbar.css'%}">
     <link rel="stylesheet" href="{% static 'base.css' %}">
+    {% if not user.is_authenticated %}
+    <script src="{% static 'js/birthdate.js' %}"></script>
+    {% endif %}
+
 
     {% block css %}
 
@@ -95,7 +99,7 @@
             <form role="search">
                 {% if not user.is_authenticated %}
                 <div class="user-actions">
-                    <a href="{% url 'login:login' %}" style="color:white; margin-right: 15px;">
+                    <a href="{% url 'login:login' %}" onclick="clearLocalStorage()" style="color:white; margin-right: 15px;">
                         LOG IN
                     </a>
                     <a href="{% url 'login:registration' %}" style="color:white;">
