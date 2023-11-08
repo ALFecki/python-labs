@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="{% static 'navbar.css'%}">
     <link rel="stylesheet" href="{% static 'base.css' %}">
 
-
     {% block css %}
 
     {% endblock %}
@@ -64,9 +63,12 @@
                 </ul>
             </div>
 
-
+            {% if user.is_authenticated %}
+            <div id="timer"></div>
+            <script src="{% static 'js/timer.js' %}"></script>
+            {% else %}
             <p id="current-time"></p>
-
+            {% endif %}
 
 
             {% if user.is_authenticated %}
@@ -85,7 +87,7 @@
                     <li><a href="{% url 'account:analyze' %}">Analyze</a></li>
                     {% endif %}
                     <hr>
-                    <li><a href="{% url 'login:logout' %}">Log out</a></li>
+                    <li><a href="{% url 'login:logout' %}" onclick="clearLocalStorage()">Log out</a></li>
                 </ul>
             </div>
             {% endif %}
