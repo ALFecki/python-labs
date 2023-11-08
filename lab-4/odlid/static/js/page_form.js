@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (fontSizeCheckbox.checked) {
             if (!fontSizeInput) {
                 createInput('Размер шрифта (px):', 'number', 'fontSizeInput');
-                document.getElementById('fontSizeInput').addEventListener('input', function() {
+                document.getElementById('fontSizeInput').addEventListener('input', function () {
                     if (fontSizeCheckbox.checked) {
                         const fontSize = document.getElementById('fontSizeInput').value + 'px';
                         document.body.style.fontSize = fontSize;
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (textColorCheckbox.checked) {
             if (!textColorInput) {
                 createInput('Цвет текста:', 'color', 'textColorInput');
-                document.getElementById('textColorInput').addEventListener('input', function() {
+                document.getElementById('textColorInput').addEventListener('input', function () {
                     if (textColorCheckbox.checked) {
                         const textColor = document.getElementById('textColorInput').value;
                         document.body.style.color = textColor;
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (backgroundColorCheckbox.checked) {
             if (!backgroundColorInput) {
                 createInput('Цвет фона:', 'color', 'backgroundColorInput');
-                document.getElementById('backgroundColorInput').addEventListener('input', function() {
+                document.getElementById('backgroundColorInput').addEventListener('input', function () {
                     if (backgroundColorCheckbox.checked) {
                         const backgroundColor = document.getElementById('backgroundColorInput').value;
                         document.body.style.background = backgroundColor;
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             if (backgroundColorInput) {
                 form.removeChild(backgroundColorInput.parentElement);
-                document.body.style.backgroundColor = '';
+                document.body.style.background = 'linear-gradient(to bottom, #222222, #000000)';
             }
         }
     });
