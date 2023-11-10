@@ -6,6 +6,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const winterDatesList = document.getElementById('winterDates');
     const fileInput = document.getElementById('file');
 
+    const summerDatesMap = new Map();
+    const winterDatesMap = new Map();
+
+    let x;
+    console.log(0 || 1 && 2 || (x=8)); // 
+    console.log(x); // undefined
     dateForm.addEventListener('submit', function (e) {
         e.preventDefault();
         const month = monthInput.value.trim().toLowerCase();
@@ -16,8 +22,10 @@ document.addEventListener('DOMContentLoaded', function () {
             dateItem.textContent = `${month} ${day}`;
 
             if (isSummerMonth(month)) {
+                summerDatesMap[month] = day;
                 summerDatesList.appendChild(dateItem);
             } else if (isWinterMonts(month)) {
+                winterDatesMap[month] = day;
                 winterDatesList.appendChild(dateItem);
             }
 
@@ -43,8 +51,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         dateItem.textContent = `${month} ${day}`;
 
                         if (isSummerMonth(month)) {
+                            summerDatesMap[month] = day;
                             summerDatesList.appendChild(dateItem);
                         } else if (isWinterMonts(month)) {
+                            winterDatesMap[month] = day;
                             winterDatesList.appendChild(dateItem);
                         }
                     }
@@ -63,7 +73,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function isSummerMonth(month) {
-        // Проверка на летний месяц
         const summerMonths = ['июнь', 'июль', 'август'];
         return summerMonths.includes(month);
     }

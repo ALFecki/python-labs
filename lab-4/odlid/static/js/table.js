@@ -41,7 +41,7 @@ function handleCellClick(cell) {
     if (!cell.classList.contains('selected')) {
         if (selectedCells.length < maxSelection) {
             const lastSelectedCell = selectedCells[selectedCells.length - 1];
-            if (!lastSelectedCell || !areNeighbours(cell, lastSelectedCell)) {
+            if (!lastSelectedCell || !checkNeighbours(cell)) {
                 cell.classList.add('selected');
                 selectedCells.push(cell);
             }
@@ -60,6 +60,16 @@ function areNeighbours(cell1, cell2) {
     return Math.abs(rowIndex1 - rowIndex2) > 1;
 }
 
+function checkNeighbours(cell) {
+    if (!selectedCells.forEach((cell1) => {
+        if (!areNeighbours(cell, cell1)) {
+            return false;
+        }
+    } )) {
+        return false;
+    };
+    return true
+}
 transposeButton.addEventListener('click', () => {
     transposeTable();
     selectedCells.forEach((cell) => cell.classList.remove('selected'));

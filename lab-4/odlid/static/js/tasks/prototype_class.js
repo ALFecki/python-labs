@@ -16,7 +16,7 @@ function PlushToy(name, price, material) {
     this.material = material;
 }
 
-PlushToy.prototype = Object.create(Toy.prototype);
+PlushToy.prototype.__proto__ = Toy.prototype;
 PlushToy.prototype.constructor = PlushToy;
 
 PlushToy.prototype.getMaterial = function () {
