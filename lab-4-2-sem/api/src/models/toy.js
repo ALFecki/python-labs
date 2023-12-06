@@ -31,6 +31,18 @@ const toySchema = new mongoose.Schema({
             message: 'Invalid toy reference',
         },
     },
+    supplier: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Supplier',
+        required: [true, 'Supplier is required for the toy'],
+        validate: {
+            validator: async function (value) {
+                const supplier = await mongoose.model('Supplier').findById(value);
+                return supplier !== null;
+            },
+            message: 'Invalid supplier reference',
+        },
+    },
 });
 
 module.exports = mongoose.model('Toy', toySchema);
