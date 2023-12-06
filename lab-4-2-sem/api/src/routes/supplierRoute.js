@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const supplierController = require('../controllers/supplierController');
-const authMiddleware = require('../middleware/authMiddleware')
+const authMiddleware = require('../middleware/middleware')
 
 router.get('/', authMiddleware, supplierController.getAll);
 router.get('/:id', authMiddleware, supplierController.getById);
