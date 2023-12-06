@@ -7,6 +7,9 @@ const toyController = {
             if (req.query.category) {
                 filter.category = req.query.category;
             }
+            if (req.query.supplier) {
+                filter.supplier = req.query.supplier;
+            }
 
             const toys = await Toy.find(filter);
             res.status(200).json(toys);
