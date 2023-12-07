@@ -41,17 +41,6 @@ const authController = {
             res.status(500).json({ error: 'Internal Server Error' });
         }
     }
-
-    isAuthorized: async (req, res) => {
-        const {id, login} = req.body;
-
-        if (!id || !login) {
-            return next(ApiError.badRequest("Incorrect id or login"));
-        }
-
-        const token = generateJwt(id, login);
-        res.json({token});
-    }
 }
 
 module.exports = authController;

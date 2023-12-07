@@ -1,37 +1,19 @@
-import Navbar from "./pages/Home"
-// import { observer } from 'mobx-react-lite';
+import './App.css';
+import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-// import AppRouter from './components/AppRouter';
-// import { useContext, useState, useEffect } from 'react';
-// import { Context } from ".";
+import Navbar from './components/Navbar/Navbar';
+import AppRouter from './components/AppRouter';
+
 
 function App() {
-  // const {userStore} = useContext(Context);
-  // const [loading, setLoading] = useState(true);
-
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     check()
-  //       .then(data => {
-  //         userStore.setUser(true);
-  //         userStore.setIsAuth(true);
-  //       })
-  //       .catch(e => console.error(e))
-  //       .finally(() => setLoading(false));
-  //   }, 10)
-  // },[])
-
-  // if (loading) {
-  //   return <p>Loading...</p>
-  // }
-
   return (
+
+
     <BrowserRouter>
       <Navbar />
-      {/* <AppRouter /> */}
+      <AppRouter />
     </BrowserRouter>
   );
-};
+}
 
 export default App;

@@ -1,0 +1,15 @@
+.title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 16px;
+  }
+  
+  .summary {
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .content {
+    margin-left: 16px;
+  }

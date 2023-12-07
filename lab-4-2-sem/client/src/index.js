@@ -1,24 +1,20 @@
-import './styles/index.css';
-import App from './App';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
-import React, { createContext } from 'react';
-// import UserStore from './store/UserStore';
-
-export const Context = createContext(null);
+import './index.css';
+import App from './App';
+// import reportWebVitals from './reportWebVitals';
+// import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
 root.render(
-  <React.StrictMode>
-    {/* <Context.Provider value={{
-      // userStore: new UserStore(),
-      // cardStore: new CardStore(),
-      // adminStore: new AdminStore(),
-    }}> */}
-
-      <App />
-    {/* </Context.Provider> */}
-  </React.StrictMode>
+  <App></App>
+  // <React.StrictMode>
+  //   <BrowserRouter>
+  //     <Routes>
+  //       <Route path="/" element={<App />}>
+  //       </Route>
+  //     </Routes>
+  //   </BrowserRouter>
+  // </React.StrictMode>
 );
-
