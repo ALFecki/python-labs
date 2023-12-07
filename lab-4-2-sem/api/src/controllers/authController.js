@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
-const UserDto = require('../dtos/userDto')
+const UserDto = require('../dto/userDto')
 
 require('dotenv').config();
 
@@ -40,6 +40,17 @@ const authController = {
         } catch (error) {
             res.status(500).json({ error: 'Internal Server Error' });
         }
+    }
+
+    isAuthorized: async (req, res) => {
+        const {id, login} = req.body;
+
+        if (!id || !login) {
+            return next(ApiError.badRequest("Incorrect id or login"));
+        }
+
+        const token = generateJwt(id, login);
+        res.json({token});
     }
 }
 

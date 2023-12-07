@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Service = require('./service');
+const Toy = require('./toy');
 
 const categorySchema = new mongoose.Schema({
     name: {
@@ -20,7 +20,7 @@ const categorySchema = new mongoose.Schema({
 categorySchema.post('findOneAndDelete', async (doc) => {
     try {
         if (doc) {
-            await Service.deleteMany({ category: doc._id })
+            await Toy.deleteMany({ category: doc._id })
         }
     } catch (error) {
         console.error(error);
