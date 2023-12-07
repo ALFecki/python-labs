@@ -8,19 +8,16 @@ const ToyComponent = () => {
     const [suppliers, setSuppliers] = useState([]);
 
     useEffect(() => {
-        // Запрос к серверу для получения категорий
         fetch('http://localhost:8081/api/category')
             .then(response => response.json())
             .then(data => setCategories(data))
             .catch(error => console.log(error));
 
-        // Запрос к серверу для получения игрушек
         fetch('http://localhost:8081/api/toy')
             .then(response => response.json())
             .then(data => setToys(data))
             .catch(error => console.log(error));
 
-        // Запрос к серверу для получения поставщиков
         fetch('http://localhost:8081/api/supplier')
             .then(response => response.json())
             .then(data => setSuppliers(data))
@@ -50,13 +47,14 @@ const ToyComponent = () => {
             <div className={styles.cardContainer}>
                 {filteredToys.map(toy => {
                     const supplier = suppliers.find(supplier => supplier.id === toy.supplierid);
+                    const category = categories.find(category => category._id === toy.category);
                     return (
                         <div key={toy.id} className={styles.card}>
                             <img src={toy.image} alt={toy.name} />
                             <h3>{toy.name}</h3>
                             <p>{toy.description}</p>
                             <p>Цена: {toy.cost}</p>
-                            <p>Категория: {categories.find(category => category._id === toy.category).name}</p>
+                            {category && <p>Категория: {category.name}</p>}
                             {supplier && <p>Поставщик: {supplier.name}</p>}
                         </div>
                     );
