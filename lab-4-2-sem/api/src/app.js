@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 require('dotenv').config();
 
 const userRoute = require('./routes/userRoute');
@@ -17,7 +18,7 @@ mongoose.connect(process.env.DATABASE_URL)
         console.error('Error connecting to the database:', err);
         process.exit(1);
     });
-
+app.use(cors());
 app.use(express.json());
 
 app.use('/api/user', userRoute);

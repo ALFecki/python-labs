@@ -43,6 +43,10 @@ const toySchema = new mongoose.Schema({
             message: 'Invalid supplier reference',
         },
     },
+    image: {
+        type: String,
+        required: [true, 'Toy image is required'],
+    },
 });
 
 module.exports = mongoose.model('Toy', toySchema);

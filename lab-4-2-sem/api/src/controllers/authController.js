@@ -34,7 +34,9 @@ const authController = {
             }
 
             const userDto = new UserDto(user);
-            const token = jwt.sign({ ...userDto }, process.env.SECRET_KEY, { expiresIn: '10d' });
+            console.log(userDto);
+            console.log(process.env.SECRET_KEY);
+            const token = jwt.sign({ ...userDto }, process.env.SECRET_KEY, { expiresIn: '30d' });
 
             res.status(200).json({ token, user: userDto });
         } catch (error) {
